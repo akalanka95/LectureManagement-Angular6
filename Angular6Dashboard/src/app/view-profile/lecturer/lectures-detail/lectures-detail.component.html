@@ -1,0 +1,357 @@
+<div class="tab-pane" id="updates">
+
+  <div class="card-content table-responsive">
+    <table class="table">
+      <thead class="text-danger">
+      <tr>
+        <th>Image</th>
+        <th>Full Name</th>
+        <th>Department</th>
+        <th>Address</th>
+        <th>Contact</th>
+        <th>Email</th>
+        <th>Active</th>
+        <th>View/Edit/Delete</th>
+
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let lectures of lecturesList" >
+        <td><img class="image" src="../assets/img/student/{{lectures.imageUrl}}" /></td>
+        <td>{{lectures.fullName}}</td>
+        <td>{{lectures.department.departmentName}}</td>
+        <td class="text-danger">{{lectures.address}}</td>
+        <td class="text-danger">{{lectures.contact}}</td>
+        <td class="text-danger">{{lectures.email}}</td>
+        <td class="text-danger">{{lectures.active}}</td>
+        <td><!--<button  type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModalLong" ><i class="fa fa-eye"></i></button>
+          &nbsp;-->
+          <a class="btn btn-success btn-sm" (click)="onEditLecture(lectures)"><i class="fa fa-pencil-square "></i></a>
+          &nbsp;
+          <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#basicExample" (click)="frame.show()"
+             ><i class="fa fa-trash "></i></a></td>
+
+        <!--<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document" style="width: 400px">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+
+                <div class="col-md-12">
+                  <div class="card card-profile">
+                    <div class="card-avatar">
+                      <a >
+                        <img class="img" src="../assets/img/student/{{lectures.imageUrl}}"/>
+                      </a>
+
+                    </div>
+
+                    <div class="content">
+                      &lt;!&ndash;<h1>Department Name</h1>&ndash;&gt;
+                      <h4 class="card-title">{{lectures.fullName}}</h4>
+                      <h6 class="category text-gray" > {{lectures.role}}</h6>
+                      <h6 class="category text-gray" > {{lectures.department}}</h6>
+                      <h6 class="category text-gray" > {{lectures.email}}</h6>
+                      <h6 class="category text-gray" style="padding-right: 10px">{{lectures.address}}</h6>
+                      <h6 class="category text-gray" > {{lectures.contact}}</h6>
+
+                      &lt;!&ndash;      <a href="#pablo" class="btn btn-danger btn-round">Follow</a>&ndash;&gt;
+                    </div>
+                  </div>
+                </div>
+
+
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                &lt;!&ndash; <button type="submit" class="btn btn-primary" data-dismiss="modal" >Save changes</button>
+               &ndash;&gt;</div>
+            </div>
+          </div>
+        </div>
+        --><!--<div class="modal fade" id="deleteModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1" aria-hidden="true">
+          <div class="modal-dialog" role="document" style="width: 400px">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel1">Delete Student</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <h3>Confirm Delete Student details</h3>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" >Save changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        -->
+        <div mdbModal #frame="mdbModal" class="modal fade top" id="frameModalTop" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+          <div class="modal-dialog modal-sm modal-notify modal-danger" role="document">
+            <!--Content-->
+            <div class="modal-content text-center">
+              <!--Header-->
+              <div class="modal-header d-flex justify-content-center">
+                <p class="heading">Are you sure?</p>
+              </div>
+
+              <!--Body-->
+              <div class="modal-body">
+                <i class="fa fa-times fa-4x animated rotateIn"></i>
+              </div>
+
+              <!--Footer-->
+              <div class="modal-footer flex-center">
+                <a mdbBtn color="danger" outline="true" class="waves-effect" (click)="onDeleteLecture(lectures)"
+                   mdbWavesEffect>Yes</a>
+                <a type="button" mdbBtn color="danger" class="waves-effect" mdbWavesEffect data-dismiss="modal" (click)="frame.hide()">No</a>
+              </div>
+            </div>
+            <!--/.Content-->
+          </div>
+        </div>
+      </tr>
+      </tbody>
+    </table>
+
+
+    <!--<div class="modal fade" id="deleteModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle1" aria-hidden="true">
+                  <div class="modal-dialog" role="document" style="margin-top: 20px; margin-left: 300px">
+                      <div class="modal-content" style="width: 900px">
+                          <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLongTitle1">Modal title</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                              </button>
+                          </div>
+                          <div class="modal-body">
+                              <form >
+                                  <div class="row">
+                                      <div class="col-md-5">
+                                          <div class="form-group form-black label-floating is-empty">
+                                              <label class="control-label"></label>
+                                              <input type="text" class="form-control" disabled  name="university" placeholder="Sabaragamuwa University">
+                                          </div>
+                                      </div>
+                                      <div class="col-md-3">
+                                          <div class="form-group form-black label-floating is-empty">
+                                              <label class="control-label">Full Name</label>
+                                              <input type="text" class="form-control" name="fullName" [(ngModel)]="modalStudent.fullName" required>
+                                          </div>
+                                      </div>
+                                      <div class="col-md-4">
+                                          <div class="form-group form-black label-floating is-empty">
+                                              <label class="control-label">Email address</label>
+                                              <input type="email" class="form-control" name="email"
+                                                     required email
+                                                     >
+                                          </div>
+                                          <span class="help-block" >Please enter valid email</span>
+
+                                      </div>
+                                  </div>
+
+                                  <div class="row">
+                                      <div class="col-md-6">
+                                          <div class="form-group form-black label-floating is-empty">
+                                              <select  id="inputState" class="form-control"  name="department"  required>
+
+                                                  &lt;!&ndash;<option *ngFor="let departments of departmentList" (click)="selectDepartment(departments)">{{departments.departmentName}}</option>
+    &ndash;&gt;
+                                              </select>
+                                          </div>
+                                      </div>
+                                      <div class="col-md-6">
+                                          <div class="form-group form-black label-floating is-empty">
+                                              <label class="control-label">Address</label>
+                                              <input type="text" class="form-control" name="address"  required >
+                                          </div>
+                                      </div>
+                                  </div>
+
+                                  <div class="row">
+                                      <div class="col-md-6">
+                                          <div class="form-group form-black label-floating is-empty">
+                                              <label class="control-label">Contact</label>
+                                              <input type="text" class="form-control" name="contact"  required >
+                                          </div>
+                                      </div>
+                                      <div class="col-md-6">
+                                          <div class="form-group form-black label-floating is-empty">
+                                              <label class="control-label">Role</label>
+                                              <input type="text" class="form-control" name="role" required >
+                                          </div>
+                                      </div>
+                                  </div>
+
+
+                                  <div class="row">
+                                      <div class="col-md-12">
+                                          <div class="form-group">
+                                              <label>About Lecture</label>
+                                              <div class="form-group form-black label-floating is-empty">
+                                                  <label class="control-label">More about him..</label>
+                                                  <textarea class="form-control" rows="5"  name="details"></textarea>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+
+                                  <button type="button" class="btn btn-danger pull-right" data-toggle="modal" data-target="#exampleModal">Update Profile</button>
+                                  &lt;!&ndash;<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                      <div class="modal-dialog" role="document" style="width: 400px">
+                                          <div class="modal-content">
+                                              <div class="modal-header">
+                                                  <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                      <span aria-hidden="true">&times;</span>
+                                                  </button>
+                                              </div>
+                                              <div class="modal-body">
+                                                  ...
+                                              </div>
+                                              <div class="modal-footer">
+                                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                  <button type="submit" class="btn btn-primary" >Save changes</button>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+    &ndash;&gt;
+                                  <div class="clearfix"></div>
+                              </form>
+                          </div>
+                          <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              &lt;!&ndash;<button type="button" class="btn btn-primary">Save changes</button>&ndash;&gt;
+                          </div>
+                      </div>
+                  </div>
+              </div>
+    &lt;!&ndash;<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle1" aria-hidden="true">
+                 <div class="modal-dialog" role="document" style="margin-top: 20px; margin-left: 300px">
+                     <div class="modal-content" style="width: 900px">
+                         <div class="modal-header">
+                             <h5 class="modal-title" id="exampleModalLongTitle1">Modal title</h5>
+                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                 <span aria-hidden="true">&times;</span>
+                             </button>
+                         </div>
+                         <div class="modal-body">
+                             <form >
+                                 <div class="row">
+                                     <div class="col-md-5">
+                                         <div class="form-group form-black label-floating is-empty">
+                                             <label class="control-label"></label>
+                                             <input type="text" class="form-control" disabled  name="university" placeholder="Sabaragamuwa University">
+                                         </div>
+                                     </div>
+                                     <div class="col-md-3">
+                                         <div class="form-group form-black label-floating is-empty">
+                                             <label class="control-label">Full Name</label>
+                                             <input type="text" class="form-control" name="fullName" [(ngModel)]="student.fullName" required>
+                                         </div>
+                                     </div>
+                                     <div class="col-md-4">
+                                         <div class="form-group form-black label-floating is-empty">
+                                             <label class="control-label">Email address</label>
+                                             <input type="email" class="form-control" name="email"
+                                                    required email
+                                                    >
+                                         </div>
+                                         <span class="help-block" >Please enter valid email</span>
+
+                                     </div>
+                                 </div>
+
+                                 <div class="row">
+                                     <div class="col-md-6">
+                                         <div class="form-group form-black label-floating is-empty">
+                                             <select  id="inputState" class="form-control"  name="department"  required>
+
+                                                 &lt;!&ndash;<option *ngFor="let departments of departmentList" (click)="selectDepartment(departments)">{{departments.departmentName}}</option>
+   &ndash;&gt;
+                                             </select>
+                                         </div>
+                                     </div>
+                                     <div class="col-md-6">
+                                         <div class="form-group form-black label-floating is-empty">
+                                             <label class="control-label">Address</label>
+                                             <input type="text" class="form-control" name="address"  required >
+                                         </div>
+                                     </div>
+                                 </div>
+
+                                 <div class="row">
+                                     <div class="col-md-6">
+                                         <div class="form-group form-black label-floating is-empty">
+                                             <label class="control-label">Contact</label>
+                                             <input type="text" class="form-control" name="contact"  required >
+                                         </div>
+                                     </div>
+                                     <div class="col-md-6">
+                                         <div class="form-group form-black label-floating is-empty">
+                                             <label class="control-label">Role</label>
+                                             <input type="text" class="form-control" name="role" required >
+                                         </div>
+                                     </div>
+                                 </div>
+
+
+                                 <div class="row">
+                                     <div class="col-md-12">
+                                         <div class="form-group">
+                                             <label>About Lecture</label>
+                                             <div class="form-group form-black label-floating is-empty">
+                                                 <label class="control-label">More about him..</label>
+                                                 <textarea class="form-control" rows="5"  name="details"></textarea>
+                                             </div>
+                                         </div>
+                                     </div>
+                                 </div>
+
+                                 <button type="button" class="btn btn-danger pull-right" data-toggle="modal" data-target="#exampleModal">Update Profile</button>
+                                 &lt;!&ndash;<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                     <div class="modal-dialog" role="document" style="width: 400px">
+                                         <div class="modal-content">
+                                             <div class="modal-header">
+                                                 <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                     <span aria-hidden="true">&times;</span>
+                                                 </button>
+                                             </div>
+                                             <div class="modal-body">
+                                                 ...
+                                             </div>
+                                             <div class="modal-footer">
+                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                 <button type="submit" class="btn btn-primary" >Save changes</button>
+                                             </div>
+                                         </div>
+                                     </div>
+                                 </div>
+   &ndash;&gt;
+                                 <div class="clearfix"></div>
+                             </form>
+                         </div>
+                         <div class="modal-footer">
+                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                             &lt;!&ndash;<button type="button" class="btn btn-primary">Save changes</button>&ndash;&gt;
+                         </div>
+                     </div>
+                 </div>
+             </div>
+  &ndash;&gt;-->
+  </div>
+</div>
+

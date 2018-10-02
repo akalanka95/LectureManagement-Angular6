@@ -1,0 +1,146 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="card card-nav-tabs card-danger">
+      <div class="card-header card-header-danger" data-background-color="red">
+        <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
+      <!--  <div class="nav-tabs-navigation">
+          <div class="nav-tabs-wrapper">
+            <ul class="nav nav-tabs" data-tabs="tabs">
+              <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link "  data-toggle="tab" routerLink="form" ><i class="material-icons">dashboard</i>Adding</a>
+              </li>
+              <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link"  data-toggle="tab" routerLink="cancel" ><i class="material-icons">face</i>Canceling</a>
+              </li>
+            </ul>
+          </div>
+
+        </div>-->
+      </div><div class="card-body ">
+      <div class="tab-content ">
+        <form>
+          <div class="row">
+            <div class="col-md-4">
+              <mat-form-field class="example-full-width">
+                <mat-select placeholder="Select Semester">
+                  <mat-option *ngFor="let semester of semesterList"
+                              [value]="semester.semesterName"
+                              (click)="selectSemester(semester)">
+                    {{semester.semesterName}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col-md-4">
+              <mat-form-field class="example-full-width">
+                <mat-select placeholder="Select Subject">
+                  <mat-option *ngFor="let course of courseList"
+                              [value]="course.lecture" (click)="selectCourse(course)">
+                    {{course.courseName}} - {{course.courseCode}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col-md-4">
+          <button mat-raised-button (click)="onSearch()"
+                  class="btn btn-danger pull-right">Search</button>
+          <div class="clearfix"></div>
+            </div>
+          </div>
+        </form>
+        <form>
+          <div class="row">
+            <div class="col-md-4">
+              <mat-form-field class="example-full-width">
+                <mat-select placeholder="Select Semester">
+                  <mat-option *ngFor="let semester of semesterList"
+                              [value]="semester.semesterName"
+                              (click)="selectSemester(semester)">
+                    {{semester.semesterName}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col-md-4">
+              <mat-form-field class="example-full-width">
+                <mat-select placeholder="Select Subject">
+                  <mat-option *ngFor="let week of weekList"
+                              [value]="week.week" (click)="selectWeek(week)">
+                    {{week.week}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col-md-4">
+              <button mat-raised-button (click)="onSearchByWeek()"
+                      class="btn btn-danger pull-right">Search</button>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+        </form>
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+    </div>
+  </div>
+  <div class="container" *ngIf="searchByWeek">
+    <button id="exportButton" class="btn btn-lg btn-danger clearfix"><span class="fa fa-file-pdf-o"></span> Export to PDF</button>
+
+    <table id="exportTable" class="table table-hover">
+      <thead>
+      <tr>
+        <th>Week</th>
+        <th>Day</th>
+        <th>Subject</th>
+        <th>StartTime</th>
+        <th>EndTime</th>
+        <th>Lecture</th>
+      </tr>
+      </thead>
+      <tbody *ngFor="let timeTable of timeTableWeekListByWeek">
+      <tr *ngIf="timeTable.active === true &&
+                timeTable.tWeek === true">
+        <td>{{timeTable.weekId}}</td>
+        <td>{{timeTable.date.day}}</td>
+        <td>{{timeTable.course.courseName}}</td>
+        <td>{{timeTable.startTime.time}}</td>
+        <td>{{timeTable.endTime.time}}</td>
+        <td>{{timeTable.lecture.fullName}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div >
+  <div class="container" *ngIf="searchBySubject">
+    <button id="exportButton1" class="btn btn-lg btn-danger clearfix"><span class="fa fa-file-pdf-o"></span> Export to PDF</button>
+
+    <table id="exportTable1" class="table table-hover">
+      <thead>
+      <tr>
+        <th>Week</th>
+        <th>Day</th>
+        <th>StartTime</th>
+        <th>EndTime</th>
+        <th>Lecture</th>
+      </tr>
+      </thead>
+      <tbody *ngFor="let timeTable of timeTableWeekList">
+              <tr *ngIf="timeTable.active === true &&
+                timeTable.tWeek === true">
+        <td>{{timeTable.weekId}}</td>
+        <td>{{timeTable.date.day}}</td>
+        <td>{{timeTable.startTime.time}}</td>
+        <td>{{timeTable.endTime.time}}</td>
+        <td>{{timeTable.lecture.fullName}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div >
+</div>
+
+
+
+<!-- you need to include the shieldui css and js assets in order for the components to work -->
+<!--
+<link rel="stylesheet" type="text/css" href="http://www.shieldui.com/shared/components/latest/css/light/all.min.css" />
+-->
+

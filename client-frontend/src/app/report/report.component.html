@@ -1,0 +1,143 @@
+<div class="main-content" style="margin-top: 20px;">
+  <div class="container-fluid" style="margin-bottom: 20px;">
+    <div class="card card-nav-tabs card-danger">
+      <div class="card-header card-header-danger" data-background-color="red">
+        <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
+        <!--  <div class="nav-tabs-navigation">
+            <div class="nav-tabs-wrapper">
+              <ul class="nav nav-tabs" data-tabs="tabs">
+                <li class="nav-item" routerLinkActive="active">
+                  <a class="nav-link "  data-toggle="tab" routerLink="form" ><i class="material-icons">dashboard</i>Adding</a>
+                </li>
+                <li class="nav-item" routerLinkActive="active">
+                  <a class="nav-link"  data-toggle="tab" routerLink="cancel" ><i class="material-icons">face</i>Canceling</a>
+                </li>
+              </ul>
+            </div>
+
+          </div>-->
+      </div><div class="card-body ">
+      <div class="tab-content ">
+        <form>
+          <div class="row">
+            <div class="col-md-4">
+            <select class="custom-select custom-select-sm" placeholder="Select Semester">
+              <option *ngFor="let semester of semesterList"
+                              [value]="semester.semesterName"
+                              (click)="selectSemester(semester)">
+                {{semester.semesterName}}
+              </option>
+            </select>
+            </div>
+            <div class="col-md-4">
+              <select class="custom-select custom-select-sm" placeholder="Select Semester">
+                <option *ngFor="let course of courseList"
+                        [value]="course.lecture" (click)="selectCourse(course)">
+                  {{course.courseName}} - {{course.courseCode}}
+                </option>
+              </select>
+            </div>
+            <div class="col-md-4">
+              <button mat-raised-button (click)="onSearch()"
+                      class="btn btn-danger pull-right">Search</button>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+        </form>
+        <form>
+          <div class="row">
+            <div class="col-md-4">
+              <select class="custom-select custom-select-sm" placeholder="Select Semester">
+                <option *ngFor="let semester of semesterList"
+                        [value]="semester.semesterName"
+                        (click)="selectSemester(semester)">
+                  {{semester.semesterName}}
+                </option>
+              </select>
+            </div>
+            <div class="col-md-4">
+              <select class="custom-select custom-select-sm" placeholder="Select Semester">
+                <option *ngFor="let week of weekList"
+                        [value]="week.week" (click)="selectWeek(week)">
+                  {{week.week}}
+                </option>
+              </select>
+            </div>
+            <div class="col-md-4">
+              <button mat-raised-button (click)="onSearchByWeek()"
+                      class="btn btn-danger pull-right">Search</button>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+        </form>
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+    </div>
+  </div>
+  <div class="container" *ngIf="searchByWeek">
+    <button id="exportButton" class="btn btn-lg btn-danger clearfix" style="margin-bottom: 20px"><span class="fa fa-file-pdf-o"></span> Export to PDF</button>
+
+    <table id="exportTable" class="table table-hover">
+      <thead>
+      <tr>
+        <th>Week</th>
+        <th>Day</th>
+        <th>Subject</th>
+        <th>StartTime</th>
+        <th>EndTime</th>
+        <th>Lecture</th>
+      </tr>
+      </thead>
+      <tbody *ngFor="let timeTable of timeTableWeekListByWeek">
+      <tr *ngIf="timeTable.active === true &&
+                timeTable.tWeek === true">
+        <td>{{timeTable.weekId}}</td>
+        <td>{{timeTable.date.day}}</td>
+        <td>{{timeTable.course.courseName}}</td>
+        <td>{{timeTable.startTime.time}}</td>
+        <td>{{timeTable.endTime.time}}</td>
+        <td>{{timeTable.lecture.fullName}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div >
+  <div class="container" *ngIf="searchBySubject">
+    <button id="exportButton1" class="btn btn-lg btn-danger clearfix"><span class="fa fa-file-pdf-o"></span> Export to PDF</button>
+
+    <table id="exportTable1" class="table table-hover">
+      <thead>
+      <tr>
+        <th>Week</th>
+        <th>Day</th>
+        <th>StartTime</th>
+        <th>EndTime</th>
+        <th>Lecture</th>
+      </tr>
+      </thead>
+      <tbody *ngFor="let timeTable of timeTableWeekList">
+      <tr *ngIf="timeTable.active === true &&
+                timeTable.tWeek === true">
+        <td>{{timeTable.weekId}}</td>
+        <td>{{timeTable.date.day}}</td>
+        <td>{{timeTable.startTime.time}}</td>
+        <td>{{timeTable.endTime.time}}</td>
+        <td>{{timeTable.lecture.fullName}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div >
+</div>
+<!--<select class="custom-select custom-select-lg mb-3">
+  <option selected>Open this select menu</option>
+  <option value="1">One</option>
+  <option value="2">Two</option>
+  <option value="3">Three</option>
+</select>
+
+<select class="custom-select custom-select-sm">
+  <option selected>Open this select menu</option>
+  <option value="1">One</option>
+  <option value="2">Two</option>
+  <option value="3">Three</option>
+</select>-->

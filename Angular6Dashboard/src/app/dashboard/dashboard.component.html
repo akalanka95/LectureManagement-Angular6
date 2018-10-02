@@ -1,0 +1,528 @@
+<div class="main-content" style="margin-top: 20px;">
+  <div class="container-fluid">
+      <div class="row">
+          <!--{{ message | async | json }}-->
+          <div class="col-lg-3 col-md-6 col-sm-6">
+              <div class="card card-stats">
+                  <div class="card-header card-header-warning card-header-icon">
+                      <div class="card-icon">
+                          <i class="material-icons">content_copy</i>
+                      </div>
+                      <p class="card-category">Date</p>
+                      <h3 class="card-title">{{curDate | date:'yyyy-MM-dd'}}
+                          <!--<small>GB</small>-->
+                      </h3>
+                  </div>
+                  <div class="card-footer">
+                      <div class="stats">
+                          <i class="material-icons text-danger"></i>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-6">
+              <div class="card card-stats">
+                  <div class="card-header card-header-success card-header-icon">
+                      <div class="card-icon">
+                          <i class="material-icons">store</i>
+                      </div>
+                      <p class="card-category">Time</p>
+                      <h3 class="card-title">{{curDate | date:'h:mm a'}}</h3>
+                  </div>
+                  <div class="card-footer">
+                      <div class="stats">
+                          <i class="material-icons"></i>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-6">
+              <div class="card card-stats">
+                  <div class="card-header card-header-danger card-header-icon">
+                      <div class="card-icon">
+                          <i class="material-icons">content_copy</i>
+                      </div>
+                      <p class="card-category">content_copy</p>
+                      <h3 class="card-title">{{weekNo}}</h3>
+                  </div>
+                  <div class="card-footer">
+                      <div class="stats">
+                          <i class="material-icons"></i>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-6">
+              <div class="card card-stats">
+                  <div class="card-header card-header-info card-header-icon">
+                      <div class="card-icon">
+                          <i class="fa fa-twitter"></i>
+                      </div>
+                      <p class="card-category">Followers</p>
+                      <h3 class="card-title">+245</h3>
+                  </div>
+                  <div class="card-footer">
+                      <div class="stats">
+                          <i class="material-icons"></i>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+      <div class="row">
+          <!--<div class="col-lg-5 col-md-6 col-sm-6">
+              <div class="card">
+                  <div class="card-header card-header-warning">
+                      <h4 class="card-title">Active Days</h4>
+                      <p class="card-category">Enable/Disable the days of the week</p>
+                  </div>
+                  <div class="card-body table-responsive">
+                      <div *ngFor="let days of dayList">
+                          <div class="row">
+                          <div class="cole-md-6">
+                              <mat-slide-toggle  [(ngModel)]="days.active"
+                                                 class="example-margin" color="primary">
+                              </mat-slide-toggle>
+                          </div>
+                          <div class="cole-md-6">
+                              <p>{{days.day}}</p>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          </div>
+                          </div>
+                      </div>
+                      &lt;!&ndash;<button type="submit" (click)="saveDay()" class="btn btn-danger pull-right" >Save Changes</button>
+                      &ndash;&gt;<button type="button" class="pull-right"
+                                 mdbBtn color="primary"   data-toggle="modal" data-target="#basicExample" (click)="frame.show()"
+                                 mdbWavesEffect>Save</button>
+                  </div>
+              </div>
+          </div>-->
+          <div class="col-lg-5 col-md-6 col-sm-6">
+              <div class="row">
+                  <div style="margin-top: 5px">
+                      <h2 style="margin-bottom: 10px">NOTICE BOARD</h2>
+                      <div class="list-group">
+                          <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
+                              <div class="d-flex w-100 justify-content-between">
+                                  <h5 class="mb-1">List group item heading</h5>
+                                  <small>3 days ago</small>
+                              </div>
+                              <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                              <small>Donec id elit non mi porta.</small>
+                          </a>
+                          <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                              <div class="d-flex w-100 justify-content-between">
+                                  <h5 class="mb-1">List group item heading</h5>
+                                  <small class="text-muted">3 days ago</small>
+                              </div>
+                              <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                              <small class="text-muted">Donec id elit non mi porta.</small>
+                          </a>
+                          <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                              <div class="d-flex w-100 justify-content-between">
+                                  <h5 class="mb-1">List group item heading</h5>
+                                  <small class="text-muted">3 days ago</small>
+                              </div>
+                              <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                              <small class="text-muted">Donec id elit non mi porta.</small>
+                          </a>
+                      </div>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="card" >
+                      <div class="card-header card-header-warning">
+                          <h4 class="card-title">Active Days</h4>
+                          <p class="card-category">Enable/Disable the days of the week</p>
+                      </div>
+                      <div class="card-body table-responsive" style="padding:20px;">
+                          <div *ngFor="let days of dayList">
+                              <div class="row" style="margin-left: 20px">
+                                  <div class="cole-md-6">
+                                      <mat-slide-toggle  [(ngModel)]="days.active"
+                                                         class="example-margin" color="primary">
+                                      </mat-slide-toggle>
+                                  </div>
+                                  <div class="cole-md-6">
+                                      <p>{{days.day}}</p>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                  </div>
+                              </div>
+                          </div>
+                          &ndash;&gt;<button type="button" class="pull-right"
+                                             mdbBtn color="primary"   data-toggle="modal" data-target="#basicExample" (click)="frame.show()"
+                                             mdbWavesEffect>Save</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6" style="margin-left: 40px">
+              <!--<a (click)="loadevents()"> loadevents</a>
+              <p>Display event : {{displayEvent | json}}</p>-->
+              <div *ngIf="calendarOptions">
+                  <ng-fullcalendar #ucCalendar [options]="calendarOptions" (eventClick)="eventClick($event.detail)" (eventDrop)="updateEvent($event.detail)"
+                                   (eventResize)="updateEvent($event.detail)" (dayClick)="dayClick($event.detail)" (clickButton)="clickButton($event.detail)" [(eventsModel)]="events"></ng-fullcalendar>
+              </div>
+          </div>
+           <!--<div class="col-md-4">
+               <div class="card card-chart">
+                   <div class="card-header card-header-warning">
+                       <div class="ct-chart" id="websiteViewsChart"></div>
+                   </div>
+                   <div class="card-body">
+                       <h4 class="card-title">Email Subscriptions</h4>
+                       <p class="card-category">Last Campaign Performance</p>
+                   </div>
+                   <div class="card-footer">
+                       <div class="stats">
+                           <i class="material-icons">access_time</i> campaign sent 2 days ago
+                       </div>
+                   </div>
+               </div>
+           </div>
+           <div class="col-md-4">
+               <div class="card card-chart">
+                   <div class="card-header card-header-danger">
+                       <div class="ct-chart" id="completedTasksChart"></div>
+                   </div>
+                   <div class="card-body">
+                       <h4 class="card-title">Completed Tasks</h4>
+                       <p class="card-category">Last Campaign Performance</p>
+                   </div>
+                   <div class="card-footer">
+                       <div class="stats">
+                           <i class="material-icons">access_time</i> campaign sent 2 days ago
+                       </div>
+                   </div>
+               </div>
+           </div>-->
+      </div>
+
+      <div class="row">
+          <div class="col-lg-6 col-md-12">
+              <div class="card">
+                  <div class="card-header card-header-tabs card-header-primary">
+                      <div class="nav-tabs-navigation">
+                          <div class="nav-tabs-wrapper">
+                              <span class="nav-tabs-title">Tasks:</span>
+                              <ul class="nav nav-tabs" data-tabs="tabs">
+                                  <li class="nav-item">
+                                      <a mat-button class="nav-link active" href="#profile" data-toggle="tab">
+                                          <i class="material-icons">bug_report</i> Bugs
+                                          <div class="ripple-container"></div>
+                                      </a>
+                                  </li>
+                                  <li class="nav-item">
+                                      <a mat-button class="nav-link" href="#messages" data-toggle="tab">
+                                          <i class="material-icons">code</i> Website
+                                          <div class="ripple-container"></div>
+                                      </a>
+                                  </li>
+                                  <li class="nav-item">
+                                      <a mat-button class="nav-link" href="#settings" data-toggle="tab">
+                                          <i class="material-icons">cloud</i> Server
+                                          <div class="ripple-container"></div>
+                                      </a>
+                                  </li>
+                              </ul>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="card-body">
+                      <div class="tab-content">
+                          <div class="tab-pane active" id="profile">
+                              <table class="table">
+                                  <tbody>
+                                      <tr>
+                                          <td>
+                                              <div class="form-check">
+                                                  <label class="form-check-label">
+                                                      <input class="form-check-input" type="checkbox" value="" checked>
+                                                      <span class="form-check-sign">
+                                                          <span class="check"></span>
+                                                      </span>
+                                                  </label>
+                                              </div>
+                                          </td>
+                                          <td>Sign contract for "What are conference organizers afraid of?"</td>
+                                          <td class="td-actions text-right">
+                                              <button mat-raised-button type="button" matTooltip="Edit Task" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                                  <i class="material-icons">edit</i>
+                                              </button>
+                                              <button mat-raised-button type="button" matTooltip="Remove" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                                  <i class="material-icons">close</i>
+                                              </button>
+                                          </td>
+                                      </tr>
+                                      <tr>
+                                          <td>
+                                              <div class="form-check">
+                                                  <label class="form-check-label">
+                                                      <input class="form-check-input" type="checkbox" value="">
+                                                      <span class="form-check-sign">
+                                                          <span class="check"></span>
+                                                      </span>
+                                                  </label>
+                                              </div>
+                                          </td>
+                                          <td>Lines From Great Russian Literature? Or E-mails From My Boss?</td>
+                                          <td class="td-actions text-right">
+                                              <button mat-raised-button type="button" matTooltip="Edit Task" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                                  <i class="material-icons">edit</i>
+                                              </button>
+                                              <button mat-raised-button type="button" matTooltip="Remove" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                                  <i class="material-icons">close</i>
+                                              </button>
+                                          </td>
+                                      </tr>
+                                      <tr>
+                                          <td>
+                                              <div class="form-check">
+                                                  <label class="form-check-label">
+                                                      <input class="form-check-input" type="checkbox" value="">
+                                                      <span class="form-check-sign">
+                                                          <span class="check"></span>
+                                                      </span>
+                                                  </label>
+                                              </div>
+                                          </td>
+                                          <td>Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
+                                          </td>
+                                          <td class="td-actions text-right">
+                                              <button mat-raised-button type="button" matTooltip="Edit Task" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                                  <i class="material-icons">edit</i>
+                                              </button>
+                                              <button mat-raised-button type="button" matTooltip="Remove" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                                  <i class="material-icons">close</i>
+                                              </button>
+                                          </td>
+                                      </tr>
+                                      <tr>
+                                          <td>
+                                              <div class="form-check">
+                                                  <label class="form-check-label">
+                                                      <input class="form-check-input" type="checkbox" value="" checked>
+                                                      <span class="form-check-sign">
+                                                          <span class="check"></span>
+                                                      </span>
+                                                  </label>
+                                              </div>
+                                          </td>
+                                          <td>Create 4 Invisible User Experiences you Never Knew About</td>
+                                          <td class="td-actions text-right">
+                                              <button mat-raised-button type="button" matTooltip="Edit Task" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                                  <i class="material-icons">edit</i>
+                                              </button>
+                                              <button mat-raised-button type="button" matTooltip="Remove" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                                  <i class="material-icons">close</i>
+                                              </button>
+                                          </td>
+                                      </tr>
+                                  </tbody>
+                              </table>
+                          </div>
+                          <div class="tab-pane" id="messages">
+                              <table class="table">
+                                  <tbody>
+                                      <tr>
+                                          <td>
+                                              <div class="form-check">
+                                                  <label class="form-check-label">
+                                                      <input class="form-check-input" type="checkbox" value="" checked>
+                                                      <span class="form-check-sign">
+                                                          <span class="check"></span>
+                                                      </span>
+                                                  </label>
+                                              </div>
+                                          </td>
+                                          <td>Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
+                                          </td>
+                                          <td class="td-actions text-right">
+                                              <button mat-raised-button type="button" matTooltip="Edit Task" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                                  <i class="material-icons">edit</i>
+                                              </button>
+                                              <button mat-raised-button type="button" matTooltip="Remove" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                                  <i class="material-icons">close</i>
+                                              </button>
+                                          </td>
+                                      </tr>
+                                      <tr>
+                                          <td>
+                                              <div class="form-check">
+                                                  <label class="form-check-label">
+                                                      <input class="form-check-input" type="checkbox" value="">
+                                                      <span class="form-check-sign">
+                                                          <span class="check"></span>
+                                                      </span>
+                                                  </label>
+                                              </div>
+                                          </td>
+                                          <td>Sign contract for "What are conference organizers afraid of?"</td>
+                                          <td class="td-actions text-right">
+                                              <button mat-raised-button type="button" matTooltip="Edit Task" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                                  <i class="material-icons">edit</i>
+                                              </button>
+                                              <button mat-raised-button type="button" matTooltip="Remove" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                                  <i class="material-icons">close</i>
+                                              </button>
+                                          </td>
+                                      </tr>
+                                  </tbody>
+                              </table>
+                          </div>
+                          <div class="tab-pane" id="settings">
+                              <table class="table">
+                                  <tbody>
+                                      <tr>
+                                          <td>
+                                              <div class="form-check">
+                                                  <label class="form-check-label">
+                                                      <input class="form-check-input" type="checkbox" value="">
+                                                      <span class="form-check-sign">
+                                                          <span class="check"></span>
+                                                      </span>
+                                                  </label>
+                                              </div>
+                                          </td>
+                                          <td>Lines From Great Russian Literature? Or E-mails From My Boss?</td>
+                                          <td class="td-actions text-right">
+                                              <button mat-raised-button type="button" matTooltip="Edit Task" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                                  <i class="material-icons">edit</i>
+                                              </button>
+                                              <button mat-raised-button type="button" matTooltip="Remove" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                                  <i class="material-icons">close</i>
+                                              </button>
+                                          </td>
+                                      </tr>
+                                      <tr>
+                                          <td>
+                                              <div class="form-check">
+                                                  <label class="form-check-label">
+                                                      <input class="form-check-input" type="checkbox" value="" checked>
+                                                      <span class="form-check-sign">
+                                                          <span class="check"></span>
+                                                      </span>
+                                                  </label>
+                                              </div>
+                                          </td>
+                                          <td>Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit
+                                          </td>
+                                          <td class="td-actions text-right">
+                                              <button mat-raised-button type="button" matTooltip="Edit Task" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                                  <i class="material-icons">edit</i>
+                                              </button>
+                                              <button mat-raised-button type="button" matTooltip="Remove" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                                  <i class="material-icons">close</i>
+                                              </button>
+                                          </td>
+                                      </tr>
+                                      <tr>
+                                          <td>
+                                              <div class="form-check">
+                                                  <label class="form-check-label">
+                                                      <input class="form-check-input" type="checkbox" value="" checked>
+                                                      <span class="form-check-sign">
+                                                          <span class="check"></span>
+                                                      </span>
+                                                  </label>
+                                              </div>
+                                          </td>
+                                          <td>Sign contract for "What are conference organizers afraid of?"</td>
+                                          <td class="td-actions text-right">
+                                              <button mat-raised-button type="button" matTooltip="Edit Task" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                                  <i class="material-icons">edit</i>
+                                              </button>
+                                              <button mat-raised-button type="button" matTooltip="Remove" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                                  <i class="material-icons">close</i>
+                                              </button>
+                                          </td>
+                                      </tr>
+                                  </tbody>
+                              </table>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="col-lg-6 col-md-12">
+              <div class="card">
+                  <div class="card-header card-header-warning">
+                      <h4 class="card-title">Employees Stats</h4>
+                      <p class="card-category">New employees on 15th September, 2016</p>
+                  </div>
+                  <div class="card-body table-responsive">
+                      <table class="table table-hover">
+                          <thead class="text-warning">
+                              <th>ID</th>
+                              <th>Name</th>
+                              <th>Salary</th>
+                              <th>Country</th>
+                          </thead>
+                          <tbody>
+                              <tr>
+                                  <td>1</td>
+                                  <td>Dakota Rice</td>
+                                  <td>$36,738</td>
+                                  <td>Niger</td>
+                              </tr>
+                              <tr>
+                                  <td>2</td>
+                                  <td>Minerva Hooper</td>
+                                  <td>$23,789</td>
+                                  <td>Curaçao</td>
+                              </tr>
+                              <tr>
+                                  <td>3</td>
+                                  <td>Sage Rodriguez</td>
+                                  <td>$56,142</td>
+                                  <td>Netherlands</td>
+                              </tr>
+                              <tr>
+                                  <td>4</td>
+                                  <td>Philip Chaney</td>
+                                  <td>$38,735</td>
+                                  <td>Korea, South</td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+    <div mdbModal #frame="mdbModal" class="modal fade" id="frameModalTop" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true" >
+        <div class="modal-dialog modal-notify modal-success" role="document">
+            <!--Content-->
+            <div class="modal-content">
+                <!--Header-->
+                <div class="modal-header">
+                    <p class="heading lead">Save Changes</p>
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="frame.hide()">
+                        <span aria-hidden="true" class="white-text">&times;</span>
+                    </button>
+                </div>
+
+                <!--Body-->
+                <div class="modal-body">
+                    <div class="text-center">
+                        <i class="fa fa-check fa-4x mb-3 animated rotateIn"></i>
+                        <p>Make sure that you have updated the availability of the dates of the week correctly.
+                        Save to make the changes.</p>
+                    </div>
+                </div>
+
+                <!--Footer-->
+                <div class="modal-footer justify-content-center">
+                    <a type="submit" (click)="saveDay()" mdbBtn color="primary" class="waves-light"  data-dismiss="modal" mdbWavesEffect>Save Changes
+                        <i class="fa fa-diamond ml-1"></i>
+                    </a>
+                    <a type="button" mdbBtn color="primary" outline="true" class="waves-effect" mdbWavesEffect (click)="frame.hide()" data-dismiss="modal">No, thanks</a>
+                </div>
+            </div>
+            <!--/.Content-->
+        </div>
+    </div>
+
+  </div>
+</div>

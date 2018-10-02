@@ -1,0 +1,361 @@
+<button mat-raised-button  (click)="selectWeek(1)" [disabled]="buttonThisWeek" class="btn btn-danger ">Week</button>
+<button mat-raised-button   (click)="selectWeek(2)"  [disabled]="buttonNextWeek" class="btn btn-danger">Next-Week</button>
+
+<div class="cd-schedule loading" *ngIf="!buttonThisWeek"  >
+  <div class="timeline">
+    <ul>
+      <li><span>08:00</span></li>
+      <li><span>08:30</span></li>
+      <li><span>09:00</span></li>
+      <li><span>09:30</span></li>
+      <li><span>10:00</span></li>
+      <li><span>10:30</span></li>
+      <li><span>11:00</span></li>
+      <li><span>11:30</span></li>
+      <li><span>12:00</span></li>
+      <li><span>12:30</span></li>
+      <li><span>13:00</span></li>
+      <li><span>13:30</span></li>
+      <li><span>14:00</span></li>
+      <li><span>14:30</span></li>
+      <li><span>15:00</span></li>
+      <li><span>15:30</span></li>
+      <li><span>16:00</span></li>
+      <li><span>16:30</span></li>
+      <li><span>17:00</span></li>
+    </ul>
+  </div>
+
+  <div class="events">
+    <ul>
+      <li class="events-group">
+        <div class="top-info"><span>Monday</span></div>
+        <ul>
+            <div *ngFor="let timeTable of timeTableWeek" >
+              <div *ngIf="timeTable.date.day === 'Monday'
+              && timeTable.active === true &&
+                timeTable.course.lecture.attendance.monday === true">
+            <li class="single-event"  (click)="frame.show()"
+                [attr.data-start]="timeTable.startTime.time"
+                [attr.data-end]="timeTable.endTime.time" data-content="event-abs-circuit" data-event="event-1">
+                <em class="event-name" >{{timeTable.course.courseName}}</em>
+                <em class="event-info"  >This is regarding the</em>
+            </li>
+              </div>
+              <div mdbModal #frame="mdbModal" class="modal" id="frameModalTop" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                   aria-hidden="true" >
+                <div class="modal-dialog modal-notify modal-success" role="document">
+                  <!--Content-->
+                  <div class="modal-content">
+                    <!--Header-->
+                    <div class="modal-header">
+                      <p class="heading lead">Save Changes</p>
+
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="frame.hide()">
+                        <span aria-hidden="true" class="white-text">&times;</span>
+                      </button>
+                    </div>
+
+                    <!--Body-->
+                    <div class="modal-body">
+                      <div class="text-center">
+                        <i class="fa fa-check fa-4x mb-3 animated rotateIn"></i>
+                        <p>Make sure that you have updated the availability of the dates of the week correctly.
+                          Save to make the changes.</p>
+                      </div>
+                    </div>
+
+                    <!--Footer-->
+                    <div class="modal-footer justify-content-center">
+                      <a type="submit"  mdbBtn color="primary" class="waves-light"  data-dismiss="modal" mdbWavesEffect>Save Changes
+                        <i class="fa fa-diamond ml-1"></i>
+                      </a>
+                      <a type="button" mdbBtn color="primary" outline="true" class="waves-effect" mdbWavesEffect (click)="frame.hide()" data-dismiss="modal">No, thanks</a>
+                    </div>
+                  </div>
+                  <!--/.Content-->
+                </div>
+              </div>
+
+             </div>
+        </ul>
+
+      </li>
+
+      <li class="events-group">
+        <div class="top-info"><span>Tuesday</span></div>
+
+        <ul>
+          <li  class="single-event" data-start="10:00" data-end="11:00"  data-content="event-rowing-workout" data-event="event-2">
+            <em class="event-name">Rowing Workout</em>
+          </li>
+          <li class="single-event" data-start="11:30" data-end="13:00"  data-content="event-restorative-yoga" data-event="event-4">
+            <a href="#0">
+              <em class="event-name">Restorative Yoga</em>
+            </a>
+          </li>
+
+          <li class="single-event" data-start="13:30" data-end="15:00" data-content="event-abs-circuit" data-event="event-1">
+            <a href="#0">
+              <em class="event-name">Abs Circuit</em>
+            </a>
+          </li>
+
+          <li class="single-event" data-start="15:45" data-end="16:45"  data-content="event-yoga-1" data-event="event-3">
+            <a href="#0">
+              <em class="event-name">Yoga Level 1</em>
+            </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="events-group">
+        <div class="top-info"><span>Wednesday</span></div>
+
+        <ul>
+          <li class="single-event" data-start="09:00" data-end="10:15" data-content="event-restorative-yoga" data-event="event-4">
+            <a href="#0">
+              <em class="event-name">Restorative Yoga</em>
+            </a>
+          </li>
+
+          <li class="single-event" data-start="10:45" data-end="11:45" data-content="event-yoga-1" data-event="event-3">
+            <a href="#0">
+              <em class="event-name">Yoga Level 1</em>
+            </a>
+          </li>
+
+          <li class="single-event" data-start="12:00" data-end="13:45"  data-content="event-rowing-workout" data-event="event-2">
+            <a href="#0">
+              <em class="event-name">Rowing Workout</em>
+            </a>
+          </li>
+
+          <li class="single-event" data-start="13:45" data-end="15:00" data-content="event-yoga-1" data-event="event-3">
+            <a href="#0">
+              <em class="event-name">Yoga Level 1</em>
+            </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="events-group">
+        <div class="top-info"><span>Thursday</span></div>
+
+        <ul>
+          <li class="single-event" data-start="09:30" data-end="10:30" data-content="event-abs-circuit" data-event="event-1">
+            <a href="#0">
+              <em class="event-name">Abs Circuit</em>
+            </a>
+          </li>
+
+          <li class="single-event" data-start="12:00" data-end="13:45" data-content="event-restorative-yoga" data-event="event-4">
+            <a href="#0">
+              <em class="event-name">Restorative Yoga</em>
+            </a>
+          </li>
+
+          <li class="single-event" data-start="15:30" data-end="16:30" data-content="event-abs-circuit" data-event="event-1">
+            <a href="#0">
+              <em class="event-name">Abs Circuit</em>
+            </a>
+          </li>
+
+          <li class="single-event" data-start="17:00" data-end="18:30"  data-content="event-rowing-workout" data-event="event-2">
+            <a href="#0">
+              <em class="event-name">Rowing Workout</em>
+            </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="events-group">
+        <div class="top-info"><span>Friday</span></div>
+
+        <ul>
+          <li class="single-event" data-start="10:00" data-end="11:00"  data-content="event-rowing-workout" data-event="event-2">
+            <a href="#0">
+              <em class="event-name">Rowing Workout</em>
+            </a>
+          </li>
+
+          <li class="single-event" data-start="12:30" data-end="14:00" data-content="event-abs-circuit" data-event="event-1">
+            <a href="#0">
+              <em class="event-name">Abs Circuit</em>
+            </a>
+          </li>
+
+          <li class="single-event" data-start="15:45" data-end="16:45"  data-content="event-yoga-1" data-event="event-3">
+            <a href="#0">
+              <em class="event-name">Yoga Level 1</em>
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+</div>
+
+<div class="cd-schedule loading" *ngIf="buttonThisWeek"  >
+  <div class="timeline">
+    <ul>
+      <li><span>08:00</span></li>
+      <li><span>08:30</span></li>
+      <li><span>09:00</span></li>
+      <li><span>09:30</span></li>
+      <li><span>10:00</span></li>
+      <li><span>10:30</span></li>
+      <li><span>11:00</span></li>
+      <li><span>11:30</span></li>
+      <li><span>12:00</span></li>
+      <li><span>12:30</span></li>
+      <li><span>13:00</span></li>
+      <li><span>13:30</span></li>
+      <li><span>14:00</span></li>
+      <li><span>14:30</span></li>
+      <li><span>15:00</span></li>
+      <li><span>15:30</span></li>
+      <li><span>16:00</span></li>
+      <li><span>16:30</span></li>
+      <li><span>17:00</span></li>
+    </ul>
+  </div>
+
+  <div class="events">
+    <ul>
+      <li class="events-group">
+        <div class="top-info"><span>Monday</span></div>
+        <ul>
+            <span *ngFor="let timeTable of timeTableNextWeek">
+              <span *ngIf="timeTable.date.day === 'Monday'
+              && timeTable.active === true &&
+                timeTable.course.lecture.attendance.monday === true"
+              >
+            <li class="single-event"
+                [attr.data-start]="timeTable.startTime.time"
+                [attr.data-end]="timeTable.endTime.time" data-content="event-abs-circuit" data-event="event-1">
+                <em class="event-name" >{{timeTable.course.courseName}}</em>
+                <em class="event-info"  >This is regarding the</em>
+            </li>
+                 </span>
+            </span>
+        </ul>
+
+      </li>
+
+      <li class="events-group">
+        <div class="top-info"><span>Tuesday</span></div>
+
+        <ul>
+          <li  class="single-event" data-start="10:00" data-end="11:00"  data-content="event-rowing-workout" data-event="event-2">
+            <em class="event-name">Rowing Workout</em>
+          </li>
+          <li class="single-event" data-start="11:30" data-end="13:00"  data-content="event-restorative-yoga" data-event="event-4">
+            <a href="#0">
+              <em class="event-name">Restorative Yoga</em>
+            </a>
+          </li>
+
+          <li class="single-event" data-start="13:30" data-end="15:00" data-content="event-abs-circuit" data-event="event-1">
+            <a href="#0">
+              <em class="event-name">Abs Circuit</em>
+            </a>
+          </li>
+
+          <li class="single-event" data-start="15:45" data-end="16:45"  data-content="event-yoga-1" data-event="event-3">
+            <a href="#0">
+              <em class="event-name">Yoga Level 1</em>
+            </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="events-group">
+        <div class="top-info"><span>Wednesday</span></div>
+
+        <ul>
+          <li class="single-event" data-start="09:00" data-end="10:15" data-content="event-restorative-yoga" data-event="event-4">
+            <a href="#0">
+              <em class="event-name">Restorative Yoga</em>
+            </a>
+          </li>
+
+          <li class="single-event" data-start="10:45" data-end="11:45" data-content="event-yoga-1" data-event="event-3">
+            <a href="#0">
+              <em class="event-name">Yoga Level 1</em>
+            </a>
+          </li>
+
+          <li class="single-event" data-start="12:00" data-end="13:45"  data-content="event-rowing-workout" data-event="event-2">
+            <a href="#0">
+              <em class="event-name">Rowing Workout</em>
+            </a>
+          </li>
+
+          <li class="single-event" data-start="13:45" data-end="15:00" data-content="event-yoga-1" data-event="event-3">
+            <a href="#0">
+              <em class="event-name">Yoga Level 1</em>
+            </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="events-group">
+        <div class="top-info"><span>Thursday</span></div>
+
+        <ul>
+          <li class="single-event" data-start="09:30" data-end="10:30" data-content="event-abs-circuit" data-event="event-1">
+            <a href="#0">
+              <em class="event-name">Abs Circuit</em>
+            </a>
+          </li>
+
+          <li class="single-event" data-start="12:00" data-end="13:45" data-content="event-restorative-yoga" data-event="event-4">
+            <a href="#0">
+              <em class="event-name">Restorative Yoga</em>
+            </a>
+          </li>
+
+          <li class="single-event" data-start="15:30" data-end="16:30" data-content="event-abs-circuit" data-event="event-1">
+            <a href="#0">
+              <em class="event-name">Abs Circuit</em>
+            </a>
+          </li>
+
+          <li class="single-event" data-start="17:00" data-end="18:30"  data-content="event-rowing-workout" data-event="event-2">
+            <a href="#0">
+              <em class="event-name">Rowing Workout</em>
+            </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="events-group">
+        <div class="top-info"><span>Friday</span></div>
+
+        <ul>
+          <li class="single-event" data-start="10:00" data-end="11:00"  data-content="event-rowing-workout" data-event="event-2">
+            <a href="#0">
+              <em class="event-name">Rowing Workout</em>
+            </a>
+          </li>
+
+          <li class="single-event" data-start="12:30" data-end="14:00" data-content="event-abs-circuit" data-event="event-1">
+            <a href="#0">
+              <em class="event-name">Abs Circuit</em>
+            </a>
+          </li>
+
+          <li class="single-event" data-start="15:45" data-end="16:45"  data-content="event-yoga-1" data-event="event-3">
+            <a href="#0">
+              <em class="event-name">Yoga Level 1</em>
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+
+

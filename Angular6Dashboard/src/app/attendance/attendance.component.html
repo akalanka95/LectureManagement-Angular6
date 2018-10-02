@@ -1,0 +1,106 @@
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header card-header-danger">
+          <h4 class="card-title ">Lecture's Week Attendance</h4>
+          <p class="card-category">Enable/Disable lecture Attendance within the week </p>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table">
+              <thead class=" text-primary">
+              <th>
+                Lecture Name
+              </th>
+              <th>
+                Code
+              </th>
+              <th>
+                Monday
+              </th>
+              <th>
+                Tuesday
+              </th>
+              <th>
+                Wednesday
+              </th>
+              <th>
+                Thursday
+              </th>
+              <th>
+                Friday
+              </th>
+              </thead>
+              <tbody>
+              <tr *ngFor="let lectures of lecturesList" >
+                <td>
+                  <h5>{{lectures.fullName}}</h5>
+                </td>
+                <td>
+                  IS4567
+                </td>
+                <td>
+                  <mat-checkbox color="primary"
+                                [(ngModel)]="lectures.attendance.monday"></mat-checkbox>
+                </td>
+                <td>
+                  <mat-checkbox color="warn"
+                                [(ngModel)]="lectures.attendance.tuesday"></mat-checkbox>
+                </td>
+                <td>
+                  <mat-checkbox [(ngModel)]="lectures.attendance.wednesday"></mat-checkbox>
+                </td>
+                <td>
+                  <mat-checkbox color="primary"
+                                [(ngModel)]="lectures.attendance.thursday"></mat-checkbox></td>
+                <td>
+                  <mat-checkbox color="warn"
+                                [(ngModel)]="lectures.attendance.friday"></mat-checkbox> </td>
+
+              </tr>
+              </tbody>
+            </table>
+            <button type="button" (click)="frame.show()" class="btn btn-danger pull-right" >Save Changes</button>
+
+            <div mdbModal #frame="mdbModal" class="modal fade" id="frameModalTop" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                 aria-hidden="true" >
+              <div class="modal-dialog modal-notify modal-success" role="document">
+                <!--Content-->
+                <div class="modal-content">
+                  <!--Header-->
+                  <div class="modal-header">
+                    <p class="heading lead">Save Changes</p>
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="frame.hide()">
+                      <span aria-hidden="true" class="white-text">&times;</span>
+                    </button>
+                  </div>
+
+                  <!--Body-->
+                  <div class="modal-body">
+                    <div class="text-center">
+                      <i class="fa fa-check fa-4x mb-3 animated rotateIn"></i>
+                      <p>Make sure that you have updated the attendance of the lectures within  the week correctly.
+                        Save to make the changes.</p>
+                    </div>
+                  </div>
+
+                  <!--Footer-->
+                  <div class="modal-footer justify-content-center">
+                    <a type="submit" (click)="saveAttendance()" mdbBtn color="primary" class="waves-light"  data-dismiss="modal" mdbWavesEffect>Save Changes
+                      <i class="fa fa-diamond ml-1"></i>
+                    </a>
+                    <a type="button" mdbBtn color="primary" outline="true" class="waves-effect" mdbWavesEffect (click)="frame.hide()" data-dismiss="modal">No, thanks</a>
+                  </div>
+                </div>
+                <!--/.Content-->
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>

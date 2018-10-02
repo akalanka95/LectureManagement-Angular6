@@ -1,0 +1,35 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="card card-nav-tabs card-danger">
+      <div class="card-header card-header-danger" data-background-color="red">
+        <!-- colors: "header-primary", "header-info", "header-success", "header-warning", "header-danger" -->
+        <div class="nav-tabs-navigation">
+          <div class="nav-tabs-wrapper">
+            <ul class="nav nav-tabs" data-tabs="tabs">
+              <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link "  data-toggle="tab" routerLink="students"  (click)="activeTab('Add Student','student')"><i class="material-icons">dashboard</i>Students</a>
+              </li>
+              <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link"  data-toggle="tab" routerLink="lectures"  (click)="activeTab('Add Lecture','lecture')"><i class="material-icons">face</i>Lectures</a>
+              </li>
+              <li class="nav-item" routerLinkActive="active">
+                <a class="nav-link"  data-toggle="tab" routerLink="departmentRef"  (click)="activeTab('Add DepartmentRef','departmentRef')"><i class="material-icons">face</i>DepartmentRefs</a>
+              </li>
+              <button type="button" style="margin-left: 50%"
+                      mdbBtn color="primary"
+                      mdbWavesEffect routerLink="add/{{activeId}}" data-toggle="tab">{{active}}</button>
+              <!--<a class="btn btn-primary btn-round pull-right" style="float: right" routerLink="add/{{activeId}}" data-toggle="tab">
+                <i class="material-icons">dashboard</i> {{active}}
+              </a>-->
+            </ul>
+          </div>
+
+        </div>
+      </div><div class="card-body ">
+      <div class="tab-content ">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+input.ng-invalid.ng-touched{
+  outline: none;
+  background-image: linear-gradient(red, red), linear-gradient(red, red);
+  background-size: 100% 2px, 100% 1px;
+  box-shadow: none;
+  transition-duration: 0.3s;
+}
+.form-control {
+  border: 0;
+}

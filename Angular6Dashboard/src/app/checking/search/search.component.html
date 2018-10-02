@@ -1,0 +1,65 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-header card-header-danger">
+            <h4 class="card-title">Add Lecture</h4>
+            <p class="card-category">Select year and the lecture</p>
+          </div>
+          <div class="card-body">
+            <form>
+              <div class="row">
+                <div class="col-md-6">
+                  <mat-form-field class="example-full-width">
+                    <mat-select placeholder="Select Semester">
+                      <mat-option *ngFor="let semester of semesterList"
+                                  [value]="semester.semesterName"
+                                  (click)="selectSemester(semester)">
+                        {{semester.semesterName}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <mat-form-field class="example-full-width">
+                    <mat-select placeholder="Select Subject">
+                      <mat-option *ngFor="let course of courseList"
+                                  [value]="course.lecture"
+                                  (click)="selectCourse(course)">
+                        {{course.courseName}} - {{course.courseCode}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+              <button mat-raised-button (click)="onSearch()"
+                      class="btn btn-danger pull-right">Search</button>
+              <div class="clearfix"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="col-md-4">
+           <div class="card card-profile">
+               <div class="card-avatar">
+                   <a href="#pablo">
+                       <img class="img" src="../assets/img/faces/marc.jpg" />
+                   </a>
+               </div>
+               <div class="card-body">
+                   <h6 class="card-category text-gray">CEO / Co-Founder</h6>
+                   <h4 class="card-title">Alec Thompson</h4>
+                   <p class="card-description">
+                       Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
+                   </p>
+                   <a href="#pablo" class="btn btn-danger btn-round">Follow</a>
+               </div>
+           </div>
+       </div>-->
+    </div>
+  </div>
+</div>
+

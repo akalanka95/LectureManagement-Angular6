@@ -1,0 +1,45 @@
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+import { Pipe } from '@angular/core';
+import { CalendarEventTitleFormatter } from './calendar-event-title-formatter.provider';
+export class CalendarEventTitlePipe {
+    /**
+     * @param {?} calendarEventTitle
+     */
+    constructor(calendarEventTitle) {
+        this.calendarEventTitle = calendarEventTitle;
+    }
+    /**
+     * @param {?} title
+     * @param {?} titleType
+     * @param {?} event
+     * @return {?}
+     */
+    transform(title, titleType, event) {
+        return this.calendarEventTitle[titleType](event);
+    }
+}
+CalendarEventTitlePipe.decorators = [
+    { type: Pipe, args: [{
+                name: 'calendarEventTitle'
+            },] },
+];
+/** @nocollapse */
+CalendarEventTitlePipe.ctorParameters = () => [
+    { type: CalendarEventTitleFormatter, },
+];
+function CalendarEventTitlePipe_tsickle_Closure_declarations() {
+    /** @type {!Array<{type: !Function, args: (undefined|!Array<?>)}>} */
+    CalendarEventTitlePipe.decorators;
+    /**
+     * @nocollapse
+     * @type {function(): !Array<(null|{type: ?, decorators: (undefined|!Array<{type: !Function, args: (undefined|!Array<?>)}>)})>}
+     */
+    CalendarEventTitlePipe.ctorParameters;
+    /** @type {?} */
+    CalendarEventTitlePipe.prototype.calendarEventTitle;
+}
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiY2FsZW5kYXItZXZlbnQtdGl0bGUucGlwZS5qcyIsInNvdXJjZVJvb3QiOiJuZzovL2FuZ3VsYXItY2FsZW5kYXIvIiwic291cmNlcyI6WyJtb2R1bGVzL2NvbW1vbi9jYWxlbmRhci1ldmVudC10aXRsZS5waXBlLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7QUFBQSxPQUFPLEVBQUUsSUFBSSxFQUFpQixNQUFNLGVBQWUsQ0FBQztBQUVwRCxPQUFPLEVBQUUsMkJBQTJCLEVBQUUsTUFBTSwyQ0FBMkMsQ0FBQztBQUt4RixNQUFNOzs7O0lBQ0osWUFBb0Isa0JBQStDO1FBQS9DLHVCQUFrQixHQUFsQixrQkFBa0IsQ0FBNkI7S0FBSTs7Ozs7OztJQUV2RSxTQUFTLENBQUMsS0FBYSxFQUFFLFNBQWlCLEVBQUUsS0FBb0I7UUFDOUQsTUFBTSxDQUFDLElBQUksQ0FBQyxrQkFBa0IsQ0FBQyxTQUFTLENBQUMsQ0FBQyxLQUFLLENBQUMsQ0FBQztLQUNsRDs7O1lBUkYsSUFBSSxTQUFDO2dCQUNKLElBQUksRUFBRSxvQkFBb0I7YUFDM0I7Ozs7WUFKUSwyQkFBMkIiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBQaXBlLCBQaXBlVHJhbnNmb3JtIH0gZnJvbSAnQGFuZ3VsYXIvY29yZSc7XG5pbXBvcnQgeyBDYWxlbmRhckV2ZW50IH0gZnJvbSAnY2FsZW5kYXItdXRpbHMnO1xuaW1wb3J0IHsgQ2FsZW5kYXJFdmVudFRpdGxlRm9ybWF0dGVyIH0gZnJvbSAnLi9jYWxlbmRhci1ldmVudC10aXRsZS1mb3JtYXR0ZXIucHJvdmlkZXInO1xuXG5AUGlwZSh7XG4gIG5hbWU6ICdjYWxlbmRhckV2ZW50VGl0bGUnXG59KVxuZXhwb3J0IGNsYXNzIENhbGVuZGFyRXZlbnRUaXRsZVBpcGUgaW1wbGVtZW50cyBQaXBlVHJhbnNmb3JtIHtcbiAgY29uc3RydWN0b3IocHJpdmF0ZSBjYWxlbmRhckV2ZW50VGl0bGU6IENhbGVuZGFyRXZlbnRUaXRsZUZvcm1hdHRlcikge31cblxuICB0cmFuc2Zvcm0odGl0bGU6IHN0cmluZywgdGl0bGVUeXBlOiBzdHJpbmcsIGV2ZW50OiBDYWxlbmRhckV2ZW50KTogc3RyaW5nIHtcbiAgICByZXR1cm4gdGhpcy5jYWxlbmRhckV2ZW50VGl0bGVbdGl0bGVUeXBlXShldmVudCk7XG4gIH1cbn1cbiJdfQ==

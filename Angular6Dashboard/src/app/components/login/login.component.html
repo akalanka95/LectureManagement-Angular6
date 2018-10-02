@@ -1,0 +1,88 @@
+<mat-toolbar  [hidden]="isloggedIn" color="primary">
+  <h3>CIS Department - ADMIN</h3>
+</mat-toolbar>
+<div class="alert alert-warning" [hidden]="error">
+    <!--<button mat-button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <i class="material-icons">close</i>
+    </button>-->
+    <span>
+                              <b> Warning - </b> Username or Password you entered is WRONG</span>
+</div>
+<!--<mat-card class="example-card" [hidden]="isloggedIn">
+  <mat-card-header>
+    <mat-card-title>Login</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form class="example-form" (ngSubmit)="onSubmit()">
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Username" [(ngModel)] = "credential.username" name="username" id="username" required>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td><mat-form-field class="example-full-width">
+            <input matInput placeholder="Password"
+                   type="password"
+                   [(ngModel)] = "credential.password"
+                   id="password"
+                   name="password" required>
+          </mat-form-field></td>
+        </tr></table>
+      <mat-card-actions>
+        <button mat-raised-button  color="primary" type="submit">Login</button>
+      </mat-card-actions>
+    </form>
+    &lt;!&ndash;<mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>&ndash;&gt;
+  </mat-card-content>
+
+</mat-card>-->
+<mdb-card [hidden]="isloggedIn">
+    <mdb-card-body>
+        <form (ngSubmit)="onSubmit()">
+            <p class="h4 text-center py-4">LOGIN</p>
+
+            <!-- Material input text -->
+            <div class="md-form">
+                <mdb-icon icon="user" class="prefix grey-text"></mdb-icon>
+                <input type="text"
+                       [(ngModel)] = "credential.username"
+                       name="username" id="username" required class="form-control" mdbInputDirective>
+                <label for="username" class="font-weight-light">User name</label>
+            </div>
+
+            <!-- Material input email
+            <div class="md-form">
+                <mdb-icon icon="envelope" class="prefix grey-text"></mdb-icon>
+                <input type="email" id="materialFormCardEmailEx" formControlName="materialFormCardEmailEx" class="form-control" mdbInputDirective>
+                <label for="materialFormCardEmailEx" class="font-weight-light">Your email</label>
+            </div>-->
+            <!-- Material input password -->
+            <div class="md-form">
+                <mdb-icon icon="lock" class="prefix grey-text"></mdb-icon>
+                <input type="password"
+                       [(ngModel)] = "credential.password"
+                       id="password"
+                       name="password" required class="form-control"
+                       mdbInputDirective>
+                <label for="password" class="font-weight-light">Your password</label>
+            </div>
+
+            <div class="text-center py-4 mt-3">
+                <button mdbBtn color="cyan" class="waves-light" type="submit" mdbWavesEffect>Login</button>
+            </div>
+        </form>
+        <!-- Material form register -->
+    </mdb-card-body>
+</mdb-card>
+<!--Section: Live preview-->
+<span [hidden]="!isloggedIn">
+ <app-admin-layout></app-admin-layout>
+</span>
+
+<!--<div class="progress">
+  <div class="progress-bar" style="width:70%">70%</div>
+</div> -->
+

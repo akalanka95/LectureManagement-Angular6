@@ -1,0 +1,392 @@
+<div class="main-content">
+    <button type="button" mdbBtn color="primary" class="waves-light" (click)="form.show()" mdbWavesEffect>Add Subject</button>
+    <!--Modal: Contact form-->
+    <div mdbModal #form="mdb-modal" class="modal fade" id="modalContactForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog cascading-modal" role="document">
+            <!--Content-->
+            <div class="modal-content">
+
+                <!--Header-->
+                <div class="modal-header light-blue darken-3 white-text">
+                    <h4 class="title">
+                        <i class="fa fa-pencil"></i> Add New Subject </h4>
+                    <button type="button" class="close waves-effect waves-light" data-dismiss="modal" aria-label="Close" (click)="form.hide()">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <!--Body-->
+                <div class="modal-body mb-0">
+                    <form  (ngSubmit)="onSubmit(f)" #f="ngForm">
+                        <div class="md-form form-sm">
+                            <select id="semesterList"  class="form-control"  [ngModel] required>
+
+                                <option *ngFor="let semesters of  semesterList" (click)="selectSemester(semesters)">{{semesters.semesterName}}</option>
+
+                            </select>
+                        </div>
+                        <div class="md-form form-sm">
+                            <mat-form-field
+                                    [floatLabel]="options.value.floatLabel">
+                                <input matInput  placeholder="Code" name="coureCode"
+                                       [(ngModel)]="courseCode" required>
+                            </mat-form-field>
+                        </div>
+                        <div class="md-form form-sm">
+                            <mat-form-field
+                                    [floatLabel]="options.value.floatLabel">
+                                <input matInput  placeholder="Credits" name="courseCredit"
+                                       [(ngModel)]="courseCredit" required>
+                            </mat-form-field>
+                        </div>
+                        <div class="md-form form-sm">
+                            <mat-form-field
+                                    [floatLabel]="options.value.floatLabel">
+                                <input matInput  placeholder="Subject" name="coureName"
+                                       [(ngModel)]="courseName" required>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="md-form form-sm">
+                            <select id="lectureList"  class="form-control"  [ngModel] required>
+
+                                <option *ngFor="let lectures of  lectureList" (click)="selectLectures(lectures)">{{lectures.fullName}}</option>
+
+                            </select>
+
+                        </div>
+                        <div class="md-form form-sm">
+
+                            <select id="day" class="form-control"  [ngModel] required>
+
+                                <option *ngFor="let days of  dayList" (click)="selectDay(days)">{{days.day}}</option>
+
+                            </select>
+
+                        </div>
+                        <label>Start Time</label>
+                        <div class="md-form form-sm">
+
+                            <select id="time" class="form-control"  [ngModel] required>
+
+                                <option *ngFor="let times of  timeList" (click)="selectStartTime(times)">{{times.time}}</option>
+
+                            </select>
+
+                        </div>
+                        <label>End Time</label>
+                        <div class="md-form form-sm">
+
+                            <select id="time2" class="form-control"  [ngModel] required>
+
+                                <option *ngFor="let times of  timeList" (click)="selectEndTime(times)">{{times.time}}</option>
+
+                            </select>
+
+                        </div>
+
+                        <div class="md-form form-sm">
+                            <select id="lectureHall" class="form-control"  [ngModel] required>
+
+                                <option *ngFor="let halls of  lectureHallList" (click)="selectHall(halls)">{{halls.name}}</option>
+
+                            </select>
+                        </div>
+
+                       <!-- <div class="md-form form-sm">
+                            <mat-form-field
+                                    [hideRequiredMarker]="options.value.hideRequired"
+                                    [floatLabel]="options.value.floatLabel">
+                                <input matInput placeholder="Simple placeholder" required>
+                            </mat-form-field>
+                        </div>-->
+
+                        <div class="text-center mt-1-half">
+                            <button mdbBtn type="submit" color="info" class="mb-2 waves-light" mdbWavesEffect>Send
+                                <i class="fa fa-send ml-1"></i>
+                            </button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+            <!--/.Content-->
+        </div>
+    </div>
+    <!--Modal: Contact form-->
+
+    <div class="card-content table-responsive">
+        <br>
+        <br>
+        <h3>Year 1</h3>
+        <h2>-------------------------------------------</h2>
+        <table class="table">
+            <thead class="text-danger">
+            <tr>
+                <th>Code</th>
+                <th>Subject</th>
+                <th>Year</th>
+                <th>Lecture</th>
+                <th>LectureHall</th>
+                <th>Day</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>Edit/Delete</th>
+                <th>Credits</th>
+
+            </tr>
+            </thead>
+            <tbody *ngFor="let timeTableLists of timeTableList">
+                <tr *ngIf="timeTableLists.semester.id === 1">
+                 <td>{{timeTableLists.course.courseCode}}</td>
+                <td>{{timeTableLists.course.courseName}}</td>
+                <td>{{timeTableLists.semester.semesterName}}</td>
+                <td class="text-danger">{{timeTableLists.course.lecture.fullName}}</td>
+                <td class="text-danger">{{timeTableLists.lectureHall.name}}</td>
+                <td class="text-danger">{{timeTableLists.date.day}}</td>
+                <td class="text-danger">{{timeTableLists.startTime.time}}</td>
+                <td class="text-danger">{{timeTableLists.endTime.time}}</td>
+                <td><a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#basicExample" (click)="frame.show()"
+                       ><i class="fa fa-trash "></i></a></td>
+                <td>{{timeTableLists.course.courseCredit}}</td>
+            </tr>
+                <div mdbModal #frame="mdbModal" class="modal fade top" id="frameModalTop" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog modal-sm modal-notify modal-danger" role="document">
+                        <!--Content-->
+                        <div class="modal-content text-center">
+                            <!--Header-->
+                            <div class="modal-header d-flex justify-content-center">
+                                <p class="heading">Are you sure?</p>
+                            </div>
+
+                            <!--Body-->
+                            <div class="modal-body">
+                                <i class="fa fa-times fa-4x animated rotateIn"></i>
+                            </div>
+
+                            <!--Footer-->
+                            <div class="modal-footer flex-center">
+                                <a (click)="onDeleteSubject(timeTableLists)" mdbBtn color="danger" outline="true" class="waves-effect"
+                                   mdbWavesEffect>Yes</a>
+                                <a type="button" mdbBtn color="danger" class="waves-effect" mdbWavesEffect data-dismiss="modal" (click)="frame.hide()">No</a>
+                            </div>
+                        </div>
+                        <!--/.Content-->
+                    </div>
+                </div>
+
+            </tbody>
+        </table>
+        <br>
+        <br>
+        <h3>Year 2</h3>
+        <h2>--------------------------------------------</h2>
+        <table class="table">
+            <thead class="text-danger">
+            <tr>
+                <th>Code</th>
+                <th>Subject</th>
+                <th>Year</th>
+                <th>Lecture</th>
+                <th>LectureHall</th>
+                <th>Day</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>Edit/Delete</th>
+                <th>Credits</th>
+
+            </tr>
+            </thead>
+            <tbody *ngFor="let timeTableLists of timeTableList">
+            <tr *ngIf="timeTableLists.semester.id === 2" >
+                <td>{{timeTableLists.course.courseCode}}</td>
+                <td>{{timeTableLists.course.courseName}}</td>
+                <td>{{timeTableLists.semester.semesterName}}</td>
+                <td class="text-danger">{{timeTableLists.course.lecture.fullName}}</td>
+                <td class="text-danger">{{timeTableLists.lectureHall.name}}</td>
+                <td class="text-danger">{{timeTableLists.date.day}}</td>
+                <td class="text-danger">{{timeTableLists.startTime.time}}</td>
+                <td class="text-danger">{{timeTableLists.endTime.time}}</td>
+                <td><a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#basicExample" (click)="frame1.show()"
+                    ><i class="fa fa-trash "></i></a></td>
+                <td>{{timeTableLists.course.courseCredit}}</td>
+                <div mdbModal #frame1="mdbModal" class="modal fade top" id="frameModalTop1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog modal-sm modal-notify modal-danger" role="document">
+                        <!--Content-->
+                        <div class="modal-content text-center">
+                            <!--Header-->
+                            <div class="modal-header d-flex justify-content-center">
+                                <p class="heading">Are you sure?</p>
+                            </div>
+
+                            <!--Body-->
+                            <div class="modal-body">
+                                <i class="fa fa-times fa-4x animated rotateIn"></i>
+                            </div>
+
+                            <!--Footer-->
+                            <div class="modal-footer flex-center">
+                                <a (click)="onDeleteSubject(timeTableLists)" mdbBtn color="danger" outline="true" class="waves-effect"
+                                   mdbWavesEffect>Yes</a>
+                                <a type="button" mdbBtn color="danger" class="waves-effect" mdbWavesEffect data-dismiss="modal" (click)="frame.hide()">No</a>
+                            </div>
+                        </div>
+                        <!--/.Content-->
+                    </div>
+                </div>
+
+            </tbody>
+        </table>
+        <br>
+        <br>
+        <h3>Year 3</h3>
+        <h2>---------------------------------------------</h2>
+        <table class="table">
+            <thead class="text-danger">
+            <tr>
+                <th>Code</th>
+                <th>Subject</th>
+                <th>Year</th>
+                <th>Lecture</th>
+                <th>LectureHall</th>
+                <th>Day</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>Edit/Delete</th>
+                <th>Credits</th>
+
+            </tr>
+            </thead>
+            <tbody *ngFor="let timeTableLists of timeTableList">
+            <tr *ngIf="timeTableLists.semester.id === 3" >
+                <td>{{timeTableLists.course.courseCode}}</td>
+                <td>{{timeTableLists.course.courseName}}</td>
+                <td>{{timeTableLists.semester.semesterName}}</td>
+                <td class="text-danger">{{timeTableLists.course.lecture.fullName}}</td>
+                <td class="text-danger">{{timeTableLists.lectureHall.name}}</td>
+                <td class="text-danger">{{timeTableLists.date.day}}</td>
+                <td class="text-danger">{{timeTableLists.startTime.time}}</td>
+                <td class="text-danger">{{timeTableLists.endTime.time}}</td>
+                <td><a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#basicExample" (click)="frame2.show()"
+                    ><i class="fa fa-trash "></i></a></td>
+                <td>{{timeTableLists.course.courseCredit}}</td>
+                <div mdbModal #frame2="mdbModal" class="modal fade top" id="frameModalTop2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog modal-sm modal-notify modal-danger" role="document">
+                        <!--Content-->
+                        <div class="modal-content text-center">
+                            <!--Header-->
+                            <div class="modal-header d-flex justify-content-center">
+                                <p class="heading">Are you sure?</p>
+                            </div>
+
+                            <!--Body-->
+                            <div class="modal-body">
+                                <i class="fa fa-times fa-4x animated rotateIn"></i>
+                            </div>
+
+                            <!--Footer-->
+                            <div class="modal-footer flex-center">
+                                <a (click)="onDeleteSubject(timeTableLists)" mdbBtn color="danger" outline="true" class="waves-effect"
+                                   mdbWavesEffect>Yes</a>
+                                <a type="button" mdbBtn color="danger" class="waves-effect" mdbWavesEffect data-dismiss="modal" (click)="frame.hide()">No</a>
+                            </div>
+                        </div>
+                        <!--/.Content-->
+                    </div>
+                </div>
+                </tbody>
+        </table>
+        <br>
+        <br>
+        <h3>Year 4</h3>
+        <h2>---------------------------------------------</h2>
+        <table class="table">
+            <thead class="text-danger">
+            <tr>
+                <th>Code</th>
+                <th>Subject</th>
+                <th>Year</th>
+                <th>Lecture</th>
+                <th>LectureHall</th>
+                <th>Day</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>Edit/Delete</th>
+                <th>Credits</th>
+
+            </tr>
+            </thead>
+            <tbody *ngFor="let timeTableLists of timeTableList">
+            <tr *ngIf="timeTableLists.semester.id === 4" >
+                <td>{{timeTableLists.course.courseCode}}</td>
+                <td>{{timeTableLists.course.courseName}}</td>
+                <td>{{timeTableLists.semester.semesterName}}</td>
+                <td class="text-danger">{{timeTableLists.course.lecture.fullName}}</td>
+                <td class="text-danger">{{timeTableLists.lectureHall.name}}</td>
+                <td class="text-danger">{{timeTableLists.date.day}}</td>
+                <td class="text-danger">{{timeTableLists.startTime.time}}</td>
+                <td class="text-danger">{{timeTableLists.endTime.time}}</td>
+                <td><a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#basicExample" (click)="frame3.show()"
+                    ><i class="fa fa-trash "></i></a></td>
+                <td>{{timeTableLists.course.courseCredit}}</td>
+                <div mdbModal #frame3="mdbModal" class="modal fade top" id="frameModalTop3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog modal-sm modal-notify modal-danger" role="document">
+                        <!--Content-->
+                        <div class="modal-content text-center">
+                            <!--Header-->
+                            <div class="modal-header d-flex justify-content-center">
+                                <p class="heading">Are you sure?</p>
+                            </div>
+
+                            <!--Body-->
+                            <div class="modal-body">
+                                <i class="fa fa-times fa-4x animated rotateIn"></i>
+                            </div>
+
+                            <!--Footer-->
+                            <div class="modal-footer flex-center">
+                                <a (click)="onDeleteSubject(timeTableLists)" mdbBtn color="danger" outline="true" class="waves-effect"
+                                   mdbWavesEffect>Yes</a>
+                                <a type="button" mdbBtn color="danger" class="waves-effect" mdbWavesEffect data-dismiss="modal" (click)="frame.hide()">No</a>
+                            </div>
+                        </div>
+                        <!--/.Content-->
+                    </div>
+                </div>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!--
+<div mdbModal #frame="mdbModal" class="modal fade top" id="frameModalTop" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-notify modal-danger" role="document">
+        &lt;!&ndash;Content&ndash;&gt;
+        <div class="modal-content text-center">
+            &lt;!&ndash;Header&ndash;&gt;
+            <div class="modal-header d-flex justify-content-center">
+                <p class="heading">Are you sure?</p>
+            </div>
+
+            &lt;!&ndash;Body&ndash;&gt;
+            <div class="modal-body">
+                <i class="fa fa-times fa-4x animated rotateIn"></i>
+            </div>
+
+            &lt;!&ndash;Footer&ndash;&gt;
+            <div class="modal-footer flex-center">
+                <a href="https://mdbootstrap.com/product/angular-bootstrap-pro/" mdbBtn color="danger" outline="true" class="waves-effect"
+                   mdbWavesEffect>Yes</a>
+                <a type="button" mdbBtn color="danger" class="waves-effect" mdbWavesEffect data-dismiss="modal" (click)="frame.hide()">No</a>
+            </div>
+        </div>
+        &lt;!&ndash;/.Content&ndash;&gt;
+    </div>
+</div>
+-->

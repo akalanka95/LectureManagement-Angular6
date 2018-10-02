@@ -1,0 +1,350 @@
+<button mat-raised-button  (click)="selectWeek(1)" [disabled]="buttonThisWeek" class="btn btn-danger ">Week</button>
+<button mat-raised-button   (click)="selectWeek(2)"  [disabled]="buttonNextWeek" class="btn btn-danger">Next-Week</button>
+
+<div class="example-container">
+    <form>
+      <div class="row">
+        <div class="col-md-2">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder={{semesterName}} disabled>
+          </mat-form-field>
+        </div>
+        <div class="col-md-2">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder={{subjectName}} disabled>
+          </mat-form-field>
+        </div>
+        <div class="col-md-2">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder={{lectureName}} disabled>
+          </mat-form-field>
+        </div>
+        <div class="col-md-2">
+          <mat-form-field class="example-full-width">
+            <mat-select placeholder="Select Day">
+              <mat-option *ngFor="let days of dayList"
+                          [value]="days.day" (click)="selectDay(days)">
+                {{days.day}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-md-2">
+          <mat-form-field class="example-full-width">
+            <mat-select placeholder="Select Free Time">
+              <mat-option *ngFor="let times of selectTimeList"
+                          [value]="times" (click)="selectTime(times.start,times.end)">
+                {{times.start}} - {{times.end}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-md-2">
+          <mat-form-field class="example-full-width">
+            <mat-select placeholder="Select lectureHall">
+              <mat-option *ngFor="let halls of freeLectureHallList"
+                          [value]="halls" (click)="selectHall(halls.id)">
+                {{halls.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-md-2">
+          <mat-form-field class="example-full-width">
+            <mat-select placeholder="Select Start-Time">
+              <mat-option *ngFor="let startTime of timeList"
+                          [value]="startTime" (click)="selectStartTime(startTime.id)" >
+                {{startTime.time}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-md-2">
+          <mat-form-field class="example-full-width">
+            <mat-select placeholder="Select End-Time">
+              <mat-option *ngFor="let endTime of timeList"
+                          [value]="endTime"  (click)="selectEndTime(endTime.id)" >
+                {{endTime.time}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+    </form>
+  </div>
+ <button [disabled]="!buttonActive" type="button" class="btn btn-primary btn-sm pull-right" (click)="frame.show()" ><i class="fa fa-eye">Add Lecture</i></button>
+
+ <div mdbModal #frame="mdbModal" class="modal fade" id="frameModalTop" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+      aria-hidden="true" >
+   <div class="modal-dialog modal-notify modal-success" role="document">
+     <!--Content-->
+     <div class="modal-content">
+       <!--Header-->
+       <div class="modal-header">
+         <p class="heading lead">Adding New Lecture</p>
+
+         <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="frame.hide()">
+           <span aria-hidden="true" class="white-text">&times;</span>
+         </button>
+       </div>
+
+       <!--Body-->
+       <div class="modal-body">
+         <div class="text-center">
+           <i class="fa fa-check fa-4x mb-3 animated rotateIn"></i>
+           <p>Confirm the adding of new lecture for {{addSemester.semesterName}}
+             {{addCourse.courseName}} </p>
+         </div>
+       </div>
+
+       <!--Footer-->
+       <div class="modal-footer justify-content-center">
+         <a type="submit" (click)="addLecture()" mdbBtn color="primary" class="waves-light"  data-dismiss="modal" mdbWavesEffect>Save Changes
+           <i class="fa fa-diamond ml-1"></i>
+         </a>
+         <a type="button" mdbBtn color="primary" outline="true" class="waves-effect" mdbWavesEffect (click)="frame.hide()" data-dismiss="modal">No, thanks</a>
+       </div>
+     </div>
+     <!--/.Content-->
+   </div>
+ </div>
+
+ <div class="cd-schedule loading" *ngIf="!buttonThisWeek" >
+    <div class="timeline">
+      <ul>
+        <li><span>08:00</span></li>
+        <li><span>08:30</span></li>
+        <li><span>09:00</span></li>
+        <li><span>09:30</span></li>
+        <li><span>10:00</span></li>
+        <li><span>10:30</span></li>
+        <li><span>11:00</span></li>
+        <li><span>11:30</span></li>
+        <li><span>12:00</span></li>
+        <li><span>12:30</span></li>
+        <li><span>13:00</span></li>
+        <li><span>13:30</span></li>
+        <li><span>14:00</span></li>
+        <li><span>14:30</span></li>
+        <li><span>15:00</span></li>
+        <li><span>15:30</span></li>
+        <li><span>16:00</span></li>
+        <li><span>16:30</span></li>
+        <li><span>17:00</span></li>
+      </ul>
+    </div>
+
+    <div class="events">
+      <ul>
+
+        <li class="events-group">
+          <div class="top-info"><span>Monday</span></div>
+          <ul>
+          <span *ngFor="let list of freeMondayTest">
+          <li class="single-event" [attr.data-start]="list.start" [attr.data-end]="list.end"  data-content="event-rowing-workout" data-event="event-2">
+            <a href="#0">
+              <em class="event-name">Rowing Workout</em>
+            </a>
+          </li>
+          </span>
+          </ul>
+        </li>
+
+        <li class="events-group">
+          <div class="top-info"><span>Tuesday</span></div>
+
+          <ul>
+             <span *ngFor="let list of freeTuesdayTest">
+          <li class="single-event" [attr.data-start]="list.start" [attr.data-end]="list.end"  data-content="event-rowing-workout" data-event="event-2">
+            <a href="#0">
+              <em class="event-name">Rowing Workout</em>
+            </a>
+          </li>
+          </span>
+          </ul>
+        </li>
+
+        <li class="events-group">
+          <div class="top-info"><span>Wednesday</span></div>
+
+          <ul>
+            <span *ngFor="let list of freeWednesdayTest">
+          <li class="single-event" [attr.data-start]="list.start" [attr.data-end]="list.end"  data-content="event-rowing-workout" data-event="event-2">
+            <a href="#0">
+              <em class="event-name">Rowing Workout</em>
+            </a>
+          </li>
+          </span>
+          </ul>
+        </li>
+
+        <li class="events-group">
+          <div class="top-info"><span>Thursday</span></div>
+
+          <ul>
+            <span *ngFor="let list of freeThursdayTest">
+          <li class="single-event" [attr.data-start]="list.start" [attr.data-end]="list.end"  data-content="event-rowing-workout" data-event="event-2">
+            <a href="#0">
+              <em class="event-name">Rowing Workout</em>
+            </a>
+          </li>
+          </span>
+          </ul>
+        </li>
+
+        <li class="events-group">
+          <div class="top-info"><span>Friday</span></div>
+
+          <ul>
+            <span *ngFor="let list of freeFridayTest">
+          <li class="single-event" [attr.data-start]="list.start" [attr.data-end]="list.end"  data-content="event-rowing-workout" data-event="event-2">
+            <a href="#0">
+              <em class="event-name">Rowing Workout</em>
+            </a>
+          </li>
+          </span>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <div class="event-modal">
+      <header class="header">
+        <div class="content">
+          <span class="event-date"></span>
+          <h3 class="event-name"></h3>
+        </div>
+
+        <div class="header-bg"></div>
+      </header>
+
+      <div class="body">
+        <h3 class="event-info"></h3>
+        <div class="body-bg"></div>
+      </div>
+
+      <a href="#0" class="close">Close</a>
+    </div>
+
+    <div class="cover-layer"></div>
+  </div>
+
+<div class="cd-schedule loading" *ngIf="buttonThisWeek" >
+  <div class="timeline">
+    <ul>
+      <li><span>08:00</span></li>
+      <li><span>08:30</span></li>
+      <li><span>09:00</span></li>
+      <li><span>09:30</span></li>
+      <li><span>10:00</span></li>
+      <li><span>10:30</span></li>
+      <li><span>11:00</span></li>
+      <li><span>11:30</span></li>
+      <li><span>12:00</span></li>
+      <li><span>12:30</span></li>
+      <li><span>13:00</span></li>
+      <li><span>13:30</span></li>
+      <li><span>14:00</span></li>
+      <li><span>14:30</span></li>
+      <li><span>15:00</span></li>
+      <li><span>15:30</span></li>
+      <li><span>16:00</span></li>
+      <li><span>16:30</span></li>
+      <li><span>17:00</span></li>
+    </ul>
+  </div>
+
+  <div class="events">
+    <ul>
+
+      <li class="events-group">
+        <div class="top-info"><span>Monday</span></div>
+        <ul>
+          <span *ngFor="let list of freeMondayTest">
+          <li class="single-event" [attr.data-start]="list.start" [attr.data-end]="list.end"  data-content="event-rowing-workout" data-event="event-2">
+            <a href="#0">
+              <em class="event-name">Rowing Workout</em>
+            </a>
+          </li>
+          </span>
+        </ul>
+      </li>
+
+      <li class="events-group">
+        <div class="top-info"><span>Tuesday</span></div>
+
+        <ul>
+             <span *ngFor="let list of freeTuesdayTest">
+          <li class="single-event" [attr.data-start]="list.start" [attr.data-end]="list.end"  data-content="event-rowing-workout" data-event="event-2">
+            <a href="#0">
+              <em class="event-name">Rowing Workout</em>
+            </a>
+          </li>
+          </span>
+        </ul>
+      </li>
+
+      <li class="events-group">
+        <div class="top-info"><span>Wednesday</span></div>
+
+        <ul>
+            <span *ngFor="let list of freeWednesdayTest">
+          <li class="single-event" [attr.data-start]="list.start" [attr.data-end]="list.end"  data-content="event-rowing-workout" data-event="event-2">
+            <a href="#0">
+              <em class="event-name">Rowing Workout</em>
+            </a>
+          </li>
+          </span>
+        </ul>
+      </li>
+
+      <li class="events-group">
+        <div class="top-info"><span>Thursday</span></div>
+
+        <ul>
+            <span *ngFor="let list of freeThursdayTest">
+          <li class="single-event" [attr.data-start]="list.start" [attr.data-end]="list.end"  data-content="event-rowing-workout" data-event="event-2">
+            <a href="#0">
+              <em class="event-name">Rowing Workout</em>
+            </a>
+          </li>
+          </span>
+        </ul>
+      </li>
+
+      <li class="events-group">
+        <div class="top-info"><span>Friday</span></div>
+
+        <ul>
+            <span *ngFor="let list of freeFridayTest">
+          <li class="single-event" [attr.data-start]="list.start" [attr.data-end]="list.end"  data-content="event-rowing-workout" data-event="event-2">
+            <a href="#0">
+              <em class="event-name">Rowing Workout</em>
+            </a>
+          </li>
+          </span>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="event-modal">
+    <header class="header">
+      <div class="content">
+        <span class="event-date"></span>
+        <h3 class="event-name"></h3>
+      </div>
+
+      <div class="header-bg"></div>
+    </header>
+
+    <div class="body">
+      <h3 class="event-info"></h3>
+      <div class="body-bg"></div>
+    </div>
+
+    <a href="#0" class="close">Close</a>
+  </div>
+
+  <div class="cover-layer"></div>
+</div>

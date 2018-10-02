@@ -1,0 +1,12 @@
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+/**
+ * Generated bundle index. Do not edit.
+ */
+export { DragAndDropModule, DraggableHelper } from './index';
+export { DraggableDirective as ɵa } from './draggable.directive';
+export { DroppableDirective as ɵb } from './droppable.directive';
+
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYW5ndWxhci1kcmFnZ2FibGUtZHJvcHBhYmxlLmpzIiwic291cmNlUm9vdCI6Im5nOi8vYW5ndWxhci1kcmFnZ2FibGUtZHJvcHBhYmxlLyIsInNvdXJjZXMiOlsiYW5ndWxhci1kcmFnZ2FibGUtZHJvcHBhYmxlLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7Ozs7QUFJQSxtREFBYyxTQUFTLENBQUM7QUFFeEIsT0FBTyxFQUFDLGtCQUFrQixJQUFJLEVBQUUsRUFBQyxNQUFNLHVCQUF1QixDQUFDO0FBQy9ELE9BQU8sRUFBQyxrQkFBa0IsSUFBSSxFQUFFLEVBQUMsTUFBTSx1QkFBdUIsQ0FBQyIsInNvdXJjZXNDb250ZW50IjpbIi8qKlxuICogR2VuZXJhdGVkIGJ1bmRsZSBpbmRleC4gRG8gbm90IGVkaXQuXG4gKi9cblxuZXhwb3J0ICogZnJvbSAnLi9pbmRleCc7XG5cbmV4cG9ydCB7RHJhZ2dhYmxlRGlyZWN0aXZlIGFzIMm1YX0gZnJvbSAnLi9kcmFnZ2FibGUuZGlyZWN0aXZlJztcbmV4cG9ydCB7RHJvcHBhYmxlRGlyZWN0aXZlIGFzIMm1Yn0gZnJvbSAnLi9kcm9wcGFibGUuZGlyZWN0aXZlJzsiXX0=

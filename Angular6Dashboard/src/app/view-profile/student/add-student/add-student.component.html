@@ -1,0 +1,289 @@
+<div class="container-fluid" style="margin-top: 40px">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header card-header-danger">
+          <h4 class="card-title">Lecture</h4>
+          <p class="card-category">Complete your profile</p>
+        </div>
+        <div class="card-body">
+          <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+            <div class="row">
+              <div class="col-md-5">
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Sabaragamuwa University" disabled>
+                </mat-form-field>
+              </div>
+              <div class="col-md-3">
+                <mat-form-field class="example-full-width">
+                  <input matInput name="fullName" [(ngModel)]="studentName" placeholder="Full Name" type="text">
+                </mat-form-field>
+              </div>
+              <div class="col-md-4">
+                <mat-form-field class="example-full-width">
+                  <input matInput [(ngModel)]="studentCode" name="studentCode" placeholder="Registration Number" type="text">
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <mat-form-field class="example-full-width">
+                  <mat-select placeholder="Select Department">
+                    <mat-option *ngFor="let department of departmentList"
+                                [value]="department.departmentName"
+                                (click)="selectDepartment(department)">
+                      {{department.departmentName}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col-md-6">
+                <mat-form-field class="example-full-width">
+                  <input matInput [(ngModel)]="studentEmail" name="studentEmail" placeholder="Email address" type="email">
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <mat-form-field class="example-full-width">
+                  <input matInput [(ngModel)]="studentAddres" name="studentAddres" placeholder="Addres" type="text">
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+                <mat-form-field class="example-full-width">
+                  <input matInput [(ngModel)]="studentRole" name="studentRole" placeholder="Role" type="text">
+                </mat-form-field>
+              </div>
+              <div class="col-md-4">
+                <mat-form-field class="example-full-width">
+                  <input matInput [(ngModel)]="studentContact" name="studentContact" placeholder="Contact" type="text">
+                </mat-form-field>
+              </div>
+              <!--<div class="col-md-4">
+                <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Postal Code" type="text">
+                </mat-form-field>
+              </div>-->
+            </div>
+            <input type="file" [ngModel] accept="image/*" (change)="onFileSelcted($event)">
+
+           <!-- <div class="row">
+              <div class="col-md-12">
+                <label>About Me</label>
+                <mat-form-field class="example-full-width">
+                  <textarea matInput placeholder="More about lecture"></textarea>
+                </mat-form-field>
+                &lt;!&ndash; <div class="form-group">
+
+                    <div class="form-group">
+                        <label class="bmd-label-floating"> Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</label>
+                        <textarea class="form-control" rows="5"></textarea>
+                    </div>
+                </div> &ndash;&gt;
+              </div>
+            </div>-->
+            <button mat-raised-button type="submit" class="btn btn-danger pull-right">{{buttonName}}</button>
+            <div class="clearfix"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card card-profile">
+        <div class="card-avatar">
+          <a *ngIf="addOrEdit; else templateName">
+            <img class="img" src="../assets/img/faces/marc.jpg"/>
+          </a>
+          <ng-template #templateName >
+            <img class="img" src="../assets/img/student/{{imagePath}}"  />
+          </ng-template>
+        </div>
+        <div class="card-body">
+          <h6 class="card-category text-gray">{{studentRole}}</h6>
+          <h4 class="card-title">{{studentName}}</h4>
+          <p class="card-description">
+            {{studentEmail}}<br>{{studentContact}}<br>{{studentAddres}}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--<div class="tab-pane active" id="home">
+  <div class="card-content">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="card">
+          &lt;!&ndash;<div class="card-header" data-background-color="red">
+            <h4 class="title">Edit Profile</h4>
+            <p class="category">Complete your profile</p>
+          </div>&ndash;&gt;
+          <div class="card-content">
+            <form  (ngSubmit)="onSubmit(f)" #f="ngForm">
+              <div class="row">
+                <div class="col-md-5">
+                  <div class="form-group form-black label-floating is-empty">
+                    <label class="control-label"></label>
+                    <input type="text" class="form-control" disabled  name="university" placeholder="Sabaragamuwa University">
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-group form-black label-floating is-empty {{isFocused}}">
+                    <label class="control-label">Full Name</label>
+                    <input type="text" class="form-control" name="fullName" [(ngModel)]="studentName" required>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group form-black label-floating is-empty ">
+                    <label class="control-label">Email address</label>
+                    <input
+                            class="form-control"
+                            type="text"
+                            mwlFlatpickr
+                            [altInput]="true"
+                            [convertModelValue]="true"
+                            [enableTime]="true"
+                            placeholder="Not set">
+                  </div>
+                  &lt;!&ndash;<span class="help-block" *ngIf="!email.valid && email.touched">Please enter valid email</span>
+&ndash;&gt;
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group form-black label-floating is-empty">
+                    <select id="inputState" class="form-control" name="department" [ngModel] required>
+
+                      <option *ngFor="let departments of departmentList" (click)="selectDepartment(departments)">{{departments.departmentName}}</option>
+
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group form-black label-floating is-empty {{isFocused}}">
+                    <label class="control-label">Address</label>
+                    <input type="text" class="form-control" name="address" [(ngModel)]="studentAddres" required >
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group form-black label-floating is-empty {{isFocused}}">
+                    <label class="control-label">Contact</label>
+                    <input type="text" class="form-control" name="contact" [(ngModel)]="studentContact" required >
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group form-black label-floating is-empty {{isFocused}}">
+                    <label class="control-label">Role</label>
+                    <input type="text" class="form-control" name="role" [(ngModel)]="studentRole" required >
+                  </div>
+                </div>
+              </div>
+              &lt;!&ndash;<div class="row">
+                <div class="col-md-12">
+                  <div class="form-group form-black label-floating is-empty {{isFocused}}">
+                    <label class="control-label">Contact</label>
+
+                  </div>
+                </div>
+              </div>&ndash;&gt;
+              <input type="file" [ngModel] accept="image/*" (change)="onFileSelcted($event)">
+              &lt;!&ndash; <image-upload  [max]="1" url="https://httpbin.org/status/200" [extensions]="['jpeg','png']" ></image-upload>
+ &ndash;&gt;
+              &lt;!&ndash;<div class="row">
+
+                <div class="col-md-8">
+                  <div class="form-group form-black label-floating is-empty">
+                    <label class="control-label">Country</label>
+                    <input type="text" class="form-control" >
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group form-black label-floating is-empty">
+                    <label class="control-label">Postal Code</label>
+                    <input type="text" class="form-control" >
+                  </div>
+                </div>
+              </div>&ndash;&gt;
+
+              &lt;!&ndash;<div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label>About Lecture</label>
+                    <div class="form-group form-black label-floating is-empty">
+                      <label class="control-label">More about him..</label>
+                      <textarea class="form-control" rows="5" [(ngModel)]="" name="details"></textarea>
+                    </div>
+                  </div>
+                </div>
+              </div>&ndash;&gt;
+
+              <button type="submit" [disabled]="!f.valid" class="btn btn-danger pull-right" >{{buttonName}}</button>
+              &lt;!&ndash;<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document" style="width: 400px">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      ...
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="submit" class="btn btn-primary" data-dismiss="modal" >Save changes</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+&ndash;&gt;
+              <div class="clearfix"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="col-md-4">
+        <div class="card card-profile">
+          <div class="card-avatar">
+            <a *ngIf="addOrEdit; else templateName">
+              <img class="img" src="../assets/img/faces/marc.jpg"/>
+            </a>
+              <ng-template #templateName >
+                  <img class="img" src="../assets/img/student/{{imagePath}}"  />
+              </ng-template>
+
+          </div>
+
+          <div class="content">
+            &lt;!&ndash;<h1>Department Name</h1>&ndash;&gt;
+            <h4 class="card-title">{{studentName}}</h4>
+            <h6 class="category text-gray" > {{studentRole}}</h6>
+            <h6 class="category text-gray" > {{studentDepartment}}</h6>
+            <h6 class="category text-gray" > {{studentEmail}}</h6>
+            <h6 class="category text-gray" style="padding-right: 10px">{{studentAddres}}</h6>
+            <h6 class="category text-gray" > {{studentContact}}</h6>
+
+            <p class="card-content">
+              {{studentName}}
+            </p>
+            &lt;!&ndash;      <a href="#pablo" class="btn btn-danger btn-round">Follow</a>&ndash;&gt;
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>-->

@@ -1,0 +1,28 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-11 ml-auto mr-auto">
+        <div class="card">
+          <div class="card-header card-header-danger">
+            <div class="nav-tabs-navigation">
+              <div class="nav-tabs-wrapper">
+                <ul class="nav nav-tabs" data-tabs="tabs">
+                  <li class="nav-item" routerLinkActive="active">
+                    <a class="nav-link"  data-toggle="tab" routerLink="message" ><i class="material-icons">face</i>Messages</a>
+                  </li>
+                  <li class="nav-item" routerLinkActive="active">
+                    <a class="nav-link "  data-toggle="tab" routerLink="mail"><i class="material-icons">dashboard</i>Mail</a>
+                  </li>
+                </ul>
+              </div>
+
+            </div>
+          </div>
+          <div class="card-body">
+              <router-outlet></router-outlet>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
