@@ -38,10 +38,12 @@ within the week and in the upcoming week.
 ![screenshot 296](https://user-images.githubusercontent.com/23623253/46484000-8326e480-c816-11e8-895f-75f360b9ce49.png)
 
 - Algorithm has been developed to give up the free time slots available when adding new lectures. When admin select the available free time, algorithm will filter and give up the free lecture halls available for that time slot.
-![screenshot 297](https://user-images.githubusercontent.com/23623253/46484001-83bf7b00-c816-11e8-9895-532437b26618.png)
+
+![screenshot 302](https://user-images.githubusercontent.com/23623253/46484341-37286f80-c817-11e8-8c2d-ccc4165d1acc.png)
 
 - Students frontend have been designed to show up the updated time tables, noticeboard and the lecture reports.
-![screenshot 302](https://user-images.githubusercontent.com/23623253/46484341-37286f80-c817-11e8-8c2d-ccc4165d1acc.png)
+
+![screenshot 297](https://user-images.githubusercontent.com/23623253/46484001-83bf7b00-c816-11e8-9895-532437b26618.png)
 
 - Sub Tasks
 
