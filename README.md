@@ -35,7 +35,12 @@ within the week and in the upcoming week.
 #### This is how my project look like
 
 
-![screenshot 294](https://user-images.githubusercontent.com/23623253/46457502-37e9e300-c7d0-11e8-988e-dc45b2b818a8.png)
+![screenshot 296](https://user-images.githubusercontent.com/23623253/46484000-8326e480-c816-11e8-895f-75f360b9ce49.png)
+![screenshot 297](https://user-images.githubusercontent.com/23623253/46484001-83bf7b00-c816-11e8-9895-532437b26618.png)
+![screenshot 298](https://user-images.githubusercontent.com/23623253/46484003-83bf7b00-c816-11e8-8697-a4a50b563034.png)
+![screenshot 299](https://user-images.githubusercontent.com/23623253/46484007-83bf7b00-c816-11e8-9465-46f4fd9a1f97.png)
+![screenshot 300](https://user-images.githubusercontent.com/23623253/46484008-84581180-c816-11e8-91ca-d83bb234bfac.png)
+![screenshot 301](https://user-images.githubusercontent.com/23623253/46484009-84581180-c816-11e8-93b5-1aff2562c46e.png)
 
 
 
